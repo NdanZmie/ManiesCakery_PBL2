@@ -258,92 +258,118 @@
 
     <!-- Floating WhatsApp Action Button (Bottom Right) -->
     <div class="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2 group">
+        <!-- Floating Tooltip Popover (Desktop) -->
+        <div class="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-[#1E1611]/95 text-white text-xs font-semibold shadow-2xl border border-white/15 backdrop-blur-md opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 pointer-events-none">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span>👋 Tanya kue / custom cake? Chat WhatsApp yuk!</span>
+        </div>
+        
         <a 
             href="https://wa.me/6289665314602?text=Halo%20Manies%20Cakery%2C%20saya%20ingin%20tanya%20produk%20dan%20pemesanan%20kue" 
             target="_blank"
             title="Chat WhatsApp Kami"
-            class="relative flex items-center justify-center w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 animate-pulse-ring border-2 border-white/40"
+            class="relative flex items-center justify-center w-14 h-14 bg-gradient-to-tr from-emerald-600 to-emerald-400 hover:from-emerald-500 hover:to-emerald-300 text-white rounded-full shadow-2xl shadow-emerald-500/40 transition-all duration-300 transform hover:scale-110 active:scale-95 animate-pulse-ring border-2 border-white/40"
         >
-            <svg class="w-7 h-7 fill-current" viewBox="0 0 448 512">
+            <svg class="w-7 h-7 fill-current drop-shadow-md" viewBox="0 0 448 512">
                 <path d="M380.9 97.1C339-2.5 231.9-33.8 144.8 6.7C84.7 33.7 44.2 95.1 48.7 161.4c2.2 31.3 11.1 62.1 25.8 89.9L32.8 480l234.5-65.8c24.7 7 50.4 10.7 76.1 10.7c88.7 0 164.5-59.6 185.6-144.6c15.5-64.2-2.7-132.6-56.1-183.2zM229.6 377.4c-32.5-1.5-64.3-9.8-93.1-24.6l-8.2-4.4l-69 19.3l18.4-67.4l-4.3-8.3c-14.5-28-22.1-59.2-22-91.1c.5-102.5 83.8-185.5 186.3-184.9c49.7.2 96.3 19.9 131.3 55c35.2 35.4 54.7 82.2 54.5 131.9c-.4 102.6-83.8 185.4-186.4 185.1zm101.3-138.4c-5.5-2.8-32.6-16.1-37.7-17.9c-5.1-1.9-8.8-2.8-12.6 2.8c-3.7 5.6-14.5 17.9-17.8 21.6c-3.3 3.7-6.6 4.2-12.1 1.4c-33.1-16.5-54.8-29.5-76.6-66.8c-5.8-9.9 5.8-9.2 16.5-30.6c1.8-3.7.9-6.9-.5-9.6c-1.4-2.8-12.6-30.3-17.3-41.5c-4.6-11.2-9.3-9.6-12.6-9.8c-3.2-.2-6.9-.2-10.5-.2s-9.6 1.4-14.6 6.9c-5.1 5.6-19.3 18.9-19.3 46s19.8 53.5 22.5 57.2c2.8 3.7 38.8 59.2 94.1 83.1c13.2 5.7 23.5 9.1 31.5 11.6c13.2 4.2 25.2 3.6 34.7 2.2c10.6-1.6 32.6-13.3 37.2-26.2c4.6-13 4.6-24.1 3.2-26.3c-1.3-2.2-5-3.6-10.5-6.3z"/>
             </svg>
+            <!-- Live Dot -->
+            <span class="absolute top-1 right-1 w-3.5 h-3.5 bg-white rounded-full flex items-center justify-center shadow-md">
+                <span class="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse"></span>
+            </span>
         </a>
     </div>
 
-    <!-- Modern E-Commerce Bakery Footer (Frosted Glass Theme) -->
-    <footer class="relative bg-[#18120e] text-white mt-24 border-t border-white/10 overflow-hidden">
+    <!-- Modern E-Commerce Bakery Footer (Frosted Glass & Warm Cocoa Theme) -->
+    <footer class="relative bg-gradient-to-b from-[#19120D] via-[#120D09] to-[#0A0705] text-white mt-24 border-t border-amber-900/30 overflow-hidden">
         
         <!-- Ambient Background Glow Gradients -->
-        <div class="absolute -top-40 left-1/4 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none"></div>
-        <div class="absolute -bottom-40 right-1/4 w-[500px] h-[500px] bg-amber-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute -top-40 left-1/4 w-[600px] h-[600px] bg-[#DFAC6B]/10 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute -bottom-40 right-1/4 w-[600px] h-[600px] bg-amber-600/10 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-amber-900/5 rounded-full blur-[160px] pointer-events-none"></div>
 
         <!-- Top Slogan & Instant Pre-Order Banner (Floating Glass Card) -->
         <div class="max-w-[1720px] w-full mx-auto px-4 sm:px-6 lg:px-10 pt-12 pb-6">
-            <div class="glass-card-gold text-[#241C16] p-8 md:p-12 rounded-3xl shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left">
-                <!-- Background pattern -->
-                <div class="absolute -right-16 -bottom-16 w-64 h-64 bg-white/20 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="glass-card-gold text-[#241C16] p-8 md:p-12 rounded-[2.5rem] shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left border border-white/50">
+                <!-- Background decorative elements -->
+                <div class="absolute -right-16 -bottom-16 w-72 h-72 bg-white/25 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -left-16 -top-16 w-60 h-60 bg-amber-300/30 rounded-full blur-2xl pointer-events-none"></div>
                 
-                <div class="relative z-10 max-w-2xl space-y-2">
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/15 text-[#241C16] font-bold text-xs uppercase tracking-wider">
-                        <span>✨</span> Order Instan via WhatsApp
-                    </span>
-                    <h3 class="font-norican text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
+                <div class="relative z-10 max-w-2xl space-y-2.5">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/15 text-[#241C16] font-extrabold text-xs uppercase tracking-wider backdrop-blur-md border border-black/10">
+                        <span class="text-sm">✨</span> 
+                        <span>Order Instan & Fast Response WhatsApp</span>
+                    </div>
+                    <h3 class="font-norican text-4xl sm:text-5xl md:text-6xl font-bold leading-tight drop-shadow-sm text-[#241C16]">
                         Made with Love, Enjoyed with Happiness
                     </h3>
-                    <p class="text-xs sm:text-sm font-semibold text-[#241C16]/85 max-w-xl">
-                        Sajikan kehangatan rasa di setiap momen berharga bersama aneka brownies fudgy, cookies, dan cake premium dari Manies Cakery.
+                    <p class="text-xs sm:text-sm font-semibold text-[#241C16]/85 max-w-xl leading-relaxed">
+                        Sajikan kehangatan rasa di setiap momen istimewa bersama aneka brownies fudgy, crunchy cookies, dan custom cake premium dari Manies Cakery.
                     </p>
                 </div>
 
-                <div class="relative z-10 flex flex-wrap items-center justify-center gap-3">
+                <!-- Refactored CTA Action Buttons -->
+                <div class="relative z-10 flex flex-wrap items-center justify-center gap-3.5">
                     <a 
                         href="https://wa.me/6289665314602?text=Halo%20Manies%20Cakery%2C%20saya%20ingin%20pesan%20kue%20sekarang" 
                         target="_blank" 
-                        class="inline-flex items-center gap-2.5 px-8 py-4 bg-[#241C16] hover:bg-black text-white rounded-full text-xs sm:text-sm font-extrabold shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 border border-white/20"
+                        class="btn-shine inline-flex items-center gap-3 px-8 py-4 bg-[#241C16] hover:bg-black text-white rounded-full text-xs sm:text-sm font-extrabold shadow-2xl shadow-black/40 transition-all duration-300 transform hover:scale-105 active:scale-95 border border-amber-300/30 cursor-pointer"
                     >
-                        <span>💬</span>
+                        <span class="text-base">💬</span>
                         <span>Pesan Sekarang via WhatsApp</span>
+                        <span class="text-xs font-bold text-[#DFAC6B]">&rarr;</span>
+                    </a>
+
+                    <a 
+                        href="{{ route('produk.index', '*') }}" 
+                        class="inline-flex items-center gap-2 px-6 py-4 bg-white/20 hover:bg-white/35 text-[#241C16] rounded-full text-xs sm:text-sm font-extrabold backdrop-blur-md border border-white/40 shadow-md transition-all duration-300 transform hover:scale-105 active:scale-95 cursor-pointer"
+                    >
+                        <span>🍰</span>
+                        <span>Lihat Semua Menu</span>
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- Main Footer Columns Grid (4 Glass Cards) -->
+        <!-- Main Footer Columns Grid (4 Modern Glass Cards) -->
         <div class="max-w-[1720px] w-full mx-auto px-4 sm:px-6 lg:px-10 py-10">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
                 
                 <!-- Col 1: Brand & Socials (Glass Card) -->
-                <div class="glass-card-dark p-7 rounded-3xl space-y-5 hover:border-amber-400/30 transition-all duration-300">
-                    <div class="space-y-3">
-                        <img src="{{ asset('assets/maniescakery2.png') }}" alt="Manies Cakery" class="h-14 w-auto object-contain filter drop-shadow-[0_4px_12px_rgba(223,172,107,0.3)]">
+                <div class="glass-card-dark p-7 rounded-3xl space-y-5 hover:border-amber-400/40 transition-all duration-300 flex flex-col justify-between group">
+                    <div class="space-y-3.5">
+                        <div class="relative inline-block py-1">
+                            <img src="{{ asset('assets/maniescakery2.png') }}" alt="Manies Cakery" class="h-14 w-auto object-contain filter drop-shadow-[0_4px_16px_rgba(223,172,107,0.35)] transition-transform duration-300 group-hover:scale-105">
+                        </div>
                         <p class="text-xs text-white/70 leading-relaxed font-light">
-                            Toko kue rumahan yang memproduksi brownies panggang, bolu pisang keju, butter cookies renyah, dan hampers eksklusif dari bahan alami berkualitas tanpa pemanis buatan.
+                            Toko kue rumahan terpercaya di Batam yang menghadirkan aneka brownies panggang fudgy, bolu pisang keju, butter cookies renyah, dan hampers eksklusif menggunakan 100% bahan alami pilihan tanpa pengawet buatan.
                         </p>
                     </div>
 
-                    <div class="pt-2">
-                        <p class="text-[10px] text-[#DFAC6B] font-bold uppercase tracking-wider mb-2.5">Temukan Kami:</p>
+                    <div class="pt-3 border-t border-white/10">
+                        <p class="text-[10px] text-[#DFAC6B] font-bold uppercase tracking-wider mb-3">Sosial Media & Pemesanan:</p>
                         <div class="flex items-center gap-2.5">
                             <a 
                                 href="https://wa.me/6289665314602" 
                                 target="_blank" 
-                                title="WhatsApp" 
-                                class="w-10 h-10 rounded-2xl bg-white/10 hover:bg-[#DFAC6B] hover:text-[#241C16] border border-white/15 flex items-center justify-center transition-all duration-300 transform hover:-translate-y-1 shadow-sm"
+                                title="Chat WhatsApp Resmi" 
+                                class="w-11 h-11 rounded-2xl bg-white/[0.06] hover:bg-gradient-to-br hover:from-emerald-500 hover:to-emerald-600 text-white border border-white/10 hover:border-transparent flex items-center justify-center transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-500/25"
                             >
                                 <img src="{{ asset('assets/icons/wa.png') }}" alt="WhatsApp" class="w-5 h-5">
                             </a>
                             <a 
                                 href="https://www.instagram.com/manies.cakery/" 
                                 target="_blank" 
-                                title="Instagram" 
-                                class="w-10 h-10 rounded-2xl bg-white/10 hover:bg-[#DFAC6B] hover:text-[#241C16] border border-white/15 flex items-center justify-center transition-all duration-300 transform hover:-translate-y-1 shadow-sm"
+                                title="Follow Instagram @manies.cakery" 
+                                class="w-11 h-11 rounded-2xl bg-white/[0.06] hover:bg-gradient-to-br hover:from-rose-500 hover:to-amber-500 text-white border border-white/10 hover:border-transparent flex items-center justify-center transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-rose-500/25"
                             >
                                 <img src="{{ asset('assets/icons/instagram.png') }}" alt="Instagram" class="w-5 h-5">
                             </a>
                             <a 
-                                href="#" 
-                                title="Gojek / Grab" 
-                                class="w-10 h-10 rounded-2xl bg-white/10 hover:bg-[#DFAC6B] hover:text-[#241C16] border border-white/15 flex items-center justify-center transition-all duration-300 transform hover:-translate-y-1 shadow-sm"
+                                href="https://gofood.link" 
+                                target="_blank"
+                                title="Pesan via GoFood" 
+                                class="w-11 h-11 rounded-2xl bg-white/[0.06] hover:bg-gradient-to-br hover:from-rose-600 hover:to-red-500 text-white border border-white/10 hover:border-transparent flex items-center justify-center transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-red-500/25"
                             >
                                 <img src="{{ asset('assets/icons/gojek.icon.png') }}" alt="GoFood" class="w-5 h-5">
                             </a>
@@ -351,79 +377,158 @@
                     </div>
                 </div>
 
-                <!-- Col 2: Quick Links (Glass Card) -->
-                <div class="glass-card-dark p-7 rounded-3xl space-y-4 hover:border-amber-400/30 transition-all duration-300">
+                <!-- Col 2: Quick Links & Menu Kategori (Glass Card) -->
+                <div class="glass-card-dark p-7 rounded-3xl space-y-4 hover:border-amber-400/40 transition-all duration-300">
                     <h4 class="text-sm font-bold text-[#DFAC6B] uppercase tracking-wider flex items-center gap-2 border-b border-white/10 pb-3">
                         <span>🍰</span> Menu & Kategori
                     </h4>
                     <ul class="space-y-2.5 text-xs text-white/80 font-light">
-                        <li><a href="{{ route('produk.index', '*') }}" class="hover:text-[#DFAC6B] hover:translate-x-1 transition-all inline-flex items-center gap-2"><span>&rarr;</span> Semua Katalog Produk</a></li>
-                        <li><a href="{{ route('produk.index', 'Brownies') }}" class="hover:text-[#DFAC6B] hover:translate-x-1 transition-all inline-flex items-center gap-2"><span>&rarr;</span> Brownies Panggang Fudgy</a></li>
-                        <li><a href="{{ route('produk.index', 'Cake') }}" class="hover:text-[#DFAC6B] hover:translate-x-1 transition-all inline-flex items-center gap-2"><span>&rarr;</span> Kue Ulang Tahun & Bolu</a></li>
-                        <li><a href="{{ route('produk.index', 'Cookies') }}" class="hover:text-[#DFAC6B] hover:translate-x-1 transition-all inline-flex items-center gap-2"><span>&rarr;</span> Cookies & Browkies</a></li>
-                        <li><a href="{{ route('produk.index', 'Hampers') }}" class="hover:text-[#DFAC6B] hover:translate-x-1 transition-all inline-flex items-center gap-2"><span>&rarr;</span> Paket Hampers Hadiah</a></li>
-                        <li><a href="{{ route('about.index') }}" class="hover:text-[#DFAC6B] hover:translate-x-1 transition-all inline-flex items-center gap-2"><span>&rarr;</span> Tentang Manies Cakery</a></li>
+                        <li>
+                            <a href="{{ route('produk.index', '*') }}" class="group/link flex items-center justify-between py-1 text-white/70 hover:text-white transition-colors">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-[#DFAC6B] group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                                    <span>Semua Katalog Produk</span>
+                                </span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/10 text-[#DFAC6B]">Katalog</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('produk.index', 'Brownies') }}" class="group/link flex items-center justify-between py-1 text-white/70 hover:text-white transition-colors">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-[#DFAC6B] group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                                    <span>Brownies Panggang Fudgy</span>
+                                </span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300">Favorit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('produk.index', 'Cake') }}" class="group/link flex items-center justify-between py-1 text-white/70 hover:text-white transition-colors">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-[#DFAC6B] group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                                    <span>Kue Ulang Tahun & Tart</span>
+                                </span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/10 text-white/70">Custom</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('produk.index', 'Cookies') }}" class="group/link flex items-center justify-between py-1 text-white/70 hover:text-white transition-colors">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-[#DFAC6B] group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                                    <span>Cookies & Browkies Renyah</span>
+                                </span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/10 text-white/70">Crunchy</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('produk.index', 'Hampers') }}" class="group/link flex items-center justify-between py-1 text-white/70 hover:text-white transition-colors">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-[#DFAC6B] group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                                    <span>Paket Gift Hampers Eksklusif</span>
+                                </span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-400/20 text-[#DFAC6B]">Gift Box</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('about.index') }}" class="group/link flex items-center justify-between py-1 text-white/70 hover:text-white transition-colors">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-[#DFAC6B] group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                                    <span>Cerita & Profil Kami</span>
+                                </span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/10 text-white/70">Tentang</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
                 <!-- Col 3: Services & Operation (Glass Card) -->
-                <div class="glass-card-dark p-7 rounded-3xl space-y-4 hover:border-amber-400/30 transition-all duration-300">
+                <div class="glass-card-dark p-7 rounded-3xl space-y-4 hover:border-amber-400/40 transition-all duration-300">
                     <h4 class="text-sm font-bold text-[#DFAC6B] uppercase tracking-wider flex items-center gap-2 border-b border-white/10 pb-3">
                         <span>🕒</span> Layanan & Operasional
                     </h4>
-                    <ul class="space-y-3 text-xs text-white/80 font-light">
-                        <li class="flex items-start gap-2.5">
-                            <span class="text-[#DFAC6B] text-sm">📅</span>
+                    <ul class="space-y-3.5 text-xs text-white/80 font-light">
+                        <li class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-500/20 text-sm">
+                                📅
+                            </div>
                             <div>
-                                <strong class="text-white font-semibold">Jam Operasional:</strong>
-                                <p class="text-white/70">Senin - Minggu: 08.00 - 20.00 WIB</p>
+                                <div class="flex items-center gap-2">
+                                    <strong class="text-white font-semibold">Jam Operasional</strong>
+                                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-bold">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Buka
+                                    </span>
+                                </div>
+                                <p class="text-white/70 mt-0.5">Senin - Minggu: 08.00 - 20.00 WIB</p>
                             </div>
                         </li>
-                        <li class="flex items-start gap-2.5">
-                            <span class="text-[#DFAC6B] text-sm">🎂</span>
+                        <li class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center shrink-0 border border-amber-500/20 text-sm">
+                                🎂
+                            </div>
                             <div>
-                                <strong class="text-white font-semibold">Custom Cake:</strong>
-                                <p class="text-white/70">Pemesanan H-1 / H-2 sebelumnya</p>
+                                <strong class="text-white font-semibold">Custom Order & Request</strong>
+                                <p class="text-white/70 mt-0.5">Pemesanan H-1 / H-2 sebelumnya agar hasil fresh & maksimal.</p>
                             </div>
                         </li>
-                        <li class="flex items-start gap-2.5">
-                            <span class="text-[#DFAC6B] text-sm">🛵</span>
+                        <li class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-xl bg-blue-500/15 text-blue-400 flex items-center justify-center shrink-0 border border-blue-500/20 text-sm">
+                                🛵
+                            </div>
                             <div>
-                                <strong class="text-white font-semibold">Pengiriman:</strong>
-                                <p class="text-white/70">Pesan antar seluruh wilayah Kota Batam</p>
+                                <strong class="text-white font-semibold">Layanan Pengiriman</strong>
+                                <p class="text-white/70 mt-0.5">Pesan antar seluruh wilayah Kota Batam & Self-Pickup di Workshop.</p>
                             </div>
                         </li>
                     </ul>
                 </div>
 
                 <!-- Col 4: Contact & Payment Methods (Glass Card) -->
-                <div class="glass-card-dark p-7 rounded-3xl space-y-4 hover:border-amber-400/30 transition-all duration-300">
+                <div class="glass-card-dark p-7 rounded-3xl space-y-4 hover:border-amber-400/40 transition-all duration-300">
                     <h4 class="text-sm font-bold text-[#DFAC6B] uppercase tracking-wider flex items-center gap-2 border-b border-white/10 pb-3">
                         <span>📍</span> Kontak & Lokasi
                     </h4>
-                    <div class="space-y-2.5 text-xs text-white/80 font-light">
-                        <p class="flex items-center gap-2">
-                            <span class="text-[#DFAC6B]">📱</span> 
-                            <span>+62 896-6531-4602</span>
-                        </p>
-                        <p class="flex items-center gap-2">
-                            <span class="text-[#DFAC6B]">📸</span> 
-                            <span>@manies.cakery</span>
-                        </p>
-                        <p class="flex items-start gap-2">
-                            <span class="text-[#DFAC6B]">🏠</span> 
-                            <span>Batam, Kepulauan Riau, Indonesia</span>
-                        </p>
+                    <div class="space-y-3 text-xs text-white/80 font-light">
+                        <a 
+                            href="https://wa.me/6289665314602" 
+                            target="_blank" 
+                            class="flex items-center gap-3 p-2.5 rounded-2xl bg-white/[0.04] hover:bg-white/10 border border-white/10 transition-all hover:border-amber-400/30 group/contact"
+                        >
+                            <span class="text-base text-emerald-400">📱</span> 
+                            <div>
+                                <span class="text-[10px] text-white/50 block">WhatsApp Official</span>
+                                <span class="text-white font-bold group-hover/contact:text-[#DFAC6B] transition-colors">+62 896-6531-4602</span>
+                            </div>
+                        </a>
+                        <a 
+                            href="https://www.instagram.com/manies.cakery/" 
+                            target="_blank" 
+                            class="flex items-center gap-3 p-2.5 rounded-2xl bg-white/[0.04] hover:bg-white/10 border border-white/10 transition-all hover:border-amber-400/30 group/contact"
+                        >
+                            <span class="text-base text-rose-400">📸</span> 
+                            <div>
+                                <span class="text-[10px] text-white/50 block">Instagram</span>
+                                <span class="text-white font-bold group-hover/contact:text-[#DFAC6B] transition-colors">@manies.cakery</span>
+                            </div>
+                        </a>
+                        <div class="flex items-start gap-3 p-2.5 rounded-2xl bg-white/[0.04] border border-white/10">
+                            <span class="text-base text-amber-400">🏠</span> 
+                            <div>
+                                <span class="text-[10px] text-white/50 block">Lokasi Dapur</span>
+                                <span class="text-white font-semibold">Batam, Kepulauan Riau, Indonesia</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Payment Partner Glass Badges -->
                     <div class="pt-3 border-t border-white/10">
-                        <p class="text-[10px] text-white/50 uppercase font-semibold mb-2">Metode Pembayaran:</p>
+                        <p class="text-[10px] text-white/50 uppercase font-semibold mb-2 flex items-center gap-1.5">
+                            <span>💳</span> Metode Pembayaran Aman:
+                        </p>
                         <div class="flex flex-wrap gap-1.5 text-[11px] font-bold text-white/90">
-                            <span class="px-2.5 py-1 bg-white/10 rounded-xl border border-white/15 backdrop-blur-md">QRIS</span>
-                            <span class="px-2.5 py-1 bg-white/10 rounded-xl border border-white/15 backdrop-blur-md">BCA</span>
-                            <span class="px-2.5 py-1 bg-white/10 rounded-xl border border-white/15 backdrop-blur-md">Mandiri</span>
-                            <span class="px-2.5 py-1 bg-white/10 rounded-xl border border-white/15 backdrop-blur-md">Cash</span>
+                            <span class="px-3 py-1 bg-white/10 hover:bg-white/20 rounded-xl border border-white/15 backdrop-blur-md transition-colors shadow-sm">QRIS</span>
+                            <span class="px-3 py-1 bg-white/10 hover:bg-white/20 rounded-xl border border-white/15 backdrop-blur-md transition-colors shadow-sm">BCA</span>
+                            <span class="px-3 py-1 bg-white/10 hover:bg-white/20 rounded-xl border border-white/15 backdrop-blur-md transition-colors shadow-sm">Mandiri</span>
+                            <span class="px-3 py-1 bg-white/10 hover:bg-white/20 rounded-xl border border-white/15 backdrop-blur-md transition-colors shadow-sm">BNI</span>
+                            <span class="px-3 py-1 bg-white/10 hover:bg-white/20 rounded-xl border border-white/15 backdrop-blur-md transition-colors shadow-sm">COD</span>
                         </div>
                     </div>
                 </div>
@@ -431,15 +536,28 @@
             </div>
         </div>
 
-        <!-- Bottom Copyright Bar (Floating Glass Strip) -->
+        <!-- Bottom Copyright Bar & Refactored Back-To-Top Button (Floating Glass Strip) -->
         <div class="max-w-[1720px] w-full mx-auto px-4 sm:px-6 lg:px-10 pb-8">
-            <div class="glass-pill py-4 px-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/60">
-                <p>&copy; {{ date('Y') }} <strong class="text-white font-semibold">Manies Cakery</strong>. All rights reserved.</p>
-                <div class="flex items-center gap-3 text-[11px] text-white/40">
+            <div class="glass-pill py-4 px-6 sm:px-8 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60">
+                <div class="flex items-center gap-2 text-center sm:text-left">
+                    <p>&copy; {{ date('Y') }} <strong class="text-white font-semibold">Manies Cakery</strong>. All rights reserved.</p>
+                </div>
+                
+                <div class="flex items-center gap-4 text-[11px] text-white/40">
                     <span>Freshly Baked in Batam</span>
                     <span>•</span>
                     <span>PBL IF 2A Malam • Polibatam</span>
                 </div>
+
+                <!-- Refactored Back to Top Button -->
+                <button 
+                    type="button" 
+                    onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-[#DFAC6B] text-white hover:text-[#241C16] text-xs font-bold border border-white/15 hover:border-transparent transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95 cursor-pointer shadow-sm"
+                >
+                    <span>Kembali ke Atas</span>
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+                </button>
             </div>
         </div>
     </footer>

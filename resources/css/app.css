@@ -100,11 +100,36 @@
 }
 
 .glass-card-gold {
-    background: linear-gradient(135deg, rgba(223, 172, 107, 0.95), rgba(201, 147, 78, 0.98));
+    background: linear-gradient(135deg, rgba(223, 172, 107, 0.98), rgba(201, 147, 78, 0.96));
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.40);
-    box-shadow: 0 16px 48px 0 rgba(223, 172, 107, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 0 20px 50px 0 rgba(223, 172, 107, 0.35);
+}
+
+/* Button Shimmer / Shine Effect */
+.btn-shine {
+    position: relative;
+    overflow: hidden;
+}
+.btn-shine::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 40%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(30deg);
+    transition: all 0.75s ease;
+}
+.btn-shine:hover::after {
+    left: 130%;
 }
 
 /* 3D Auth Flip Card Transitions */
