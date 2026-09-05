@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="absolute top-[-12%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-                <img src="{{ asset('assets/PI.png') }}" alt="">
+                <img src="{{ asset('assets/maniescakery2.png') }}" alt="Manies Cakery" class="w-24">
             </div>
             <div class="text-2xl text-center text-bold">
                 <p>Made with Love, <br>Enjoyed with Happiness</p>

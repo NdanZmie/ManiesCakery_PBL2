@@ -120,7 +120,7 @@
             <a href="/about-us" class="bg-secondary px-10 py-2 text-white font-bold tracking-wide uppercase rounded">
             about us</a>
         </div>
-        <img src="{{ asset('assets/image.png') }}" alt="" class="w-120 rounded-2xl">
+        <img src="{{ asset('assets/banner.png') }}" alt="" class="w-120 rounded-2xl">
     </section>
 <br><br>
     <section class="flex flex-row-reverse justify-between items-center">
@@ -130,7 +130,7 @@
             <br><br>
             <a href="{{ route('produk.index', '*') }}" class="italic tracking-wide rounded underline text-xl text-secondary">lihat produk manies cakery -></a>
         </div>
-        <img src="{{ asset('assets/cake6.png') }}" alt="" class="w-120 rounded-2xl">
+        <img src="{{ asset('assets/produk/cake6.png') }}" alt="" class="w-120 rounded-2xl">
     </section>
     <br>
     <hr class="text-secondary">
@@ -142,7 +142,7 @@
     <section class="grid grid-cols-2 grid-rows-2 gap-x-8">
       <div class="relative group overflow-hidden rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform">
         <a href="{{ route('produk.index', 'Cookies') }}">
-          <img src="{{ asset('assets/Cookies-M.png') }}" alt="Cookies" class="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
+          <img src="{{ asset('assets/produk/Cookies-M.png') }}" alt="Cookies" class="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
           <div class="hover:bg-black/30 w-full h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center flex-col text-center text-white">
             <h2 class="text-5xl">Cookies</h2>
             <span class="transition-transform duration-300 hidden group-hover:inline-block">See More</span>
@@ -151,7 +151,7 @@
       </div>
       <div class="relative group overflow-hidden rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform">
         <a href="{{ route('produk.index', 'Brownies') }}">
-          <img src="{{ asset('assets/Brownies-M.png') }}" alt="Cookies" class="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
+          <img src="{{ asset('assets/produk/Brownies-M.png') }}" alt="Brownies" class="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
           <div class="hover:bg-black/30 w-full h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center flex-col text-center text-white">
             <h2 class="text-5xl">Brownies</h2>
             <span class="transition-transform duration-300 hidden group-hover:inline-block">See More</span>
@@ -160,7 +160,7 @@
       </div>
       <div class="relative group overflow-hidden rounded-lg shadow-xl hover:shadow-2xl mb-6 transition-all duration-300 transform">
         <a href="{{ route('produk.index', 'Cake') }}">
-          <img src="{{ asset('assets/Cake-M.png') }}" alt="Cookies" class="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
+          <img src="{{ asset('assets/produk/Cake-M.png') }}" alt="Cake" class="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
           <div class="hover:bg-black/30 w-full h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center flex-col text-center text-white">
             <h2 class="text-5xl">Cake</h2>
             <span class="transition-transform duration-300 hidden group-hover:inline-block">See More</span>
@@ -169,7 +169,7 @@
       </div>
        <div class="relative group overflow-hidden rounded-lg shadow-xl hover:shadow-2xl mb-6 transition-all duration-300 transform">
         <a href="{{ route('produk.index', 'Hampers') }}">
-          <img src="{{ asset('assets/Hampers-M.png') }}" alt="Cookies" class="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
+          <img src="{{ asset('assets/hampers/Hampers-M.png') }}" alt="Hampers" class="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
           <div class="hover:bg-black/30 w-full h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center flex-col text-center text-white">
             <h2 class="text-5xl">Hampers</h2>
             <span class="transition-transform duration-300 hidden group-hover:inline-block">See More</span>

@@ -13,10 +13,10 @@ class KategoriSeeder extends Seeder
      */
     public function run(): void
     {
-        $kategori = ['Cake', 'Cupcake', 'Brownies', 'Cookies', 'Small Cake'];
+        $kategori = ['Cake', 'Brownies', 'Cookies', 'Hampers', 'Small Cake', 'Cupcake'];
 
         foreach ($kategori as $nama) {
-            Kategori::create(['nama' => $nama]);
+            Kategori::firstOrCreate(['nama' => $nama]);
         }
     }
 }

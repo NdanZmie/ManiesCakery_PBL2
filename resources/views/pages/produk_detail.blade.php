@@ -105,11 +105,11 @@
     <div class="py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 w-full">
         <!-- Item Start -->
         @foreach ([
-          ['title' => 'Cake', 'image' => 'Cake-M.png'],
-          ['title' => 'Brownies', 'image' => 'Brownies-M.png'],
-          ['title' => 'Cookies', 'image' => 'Cookies-M.png'],
-          ['title' => 'Hampers', 'image' => 'Hampers-M.png'],
-          ['title' => 'Small Cake', 'image' => 'Small-M.png']
+          ['title' => 'Cake', 'image' => 'produk/Cake-M.png'],
+          ['title' => 'Brownies', 'image' => 'produk/Brownies-M.png'],
+          ['title' => 'Cookies', 'image' => 'produk/Cookies-M.png'],
+          ['title' => 'Hampers', 'image' => 'hampers/Hampers-M.png'],
+          ['title' => 'Small Cake', 'image' => 'produk/Small-M.png']
         ] as $item)
         <div class="relative group overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
           <a href="{{ route('produk.index', $item['title']) }}">
