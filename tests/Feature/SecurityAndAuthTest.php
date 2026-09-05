@@ -145,7 +145,7 @@ class SecurityAndAuthTest extends TestCase
     {
         $response = $this->get('/');
         $response->assertStatus(200);
-        $response->assertSee('default-carousel');
+        $response->assertSee('heroSlider');
     }
 }
 

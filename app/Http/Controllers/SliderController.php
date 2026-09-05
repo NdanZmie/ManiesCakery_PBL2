@@ -23,11 +23,11 @@ class SliderController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'sliderImage1' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
-            'sliderImage2' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
-            'sliderImage3' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
-            'sliderImage4' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
-            'sliderImage5' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+            'sliderImage1' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg,jfif,avif|max:5120',
+            'sliderImage2' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg,jfif,avif|max:5120',
+            'sliderImage3' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg,jfif,avif|max:5120',
+            'sliderImage4' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg,jfif,avif|max:5120',
+            'sliderImage5' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg,jfif,avif|max:5120',
         ]);
 
         for ($i = 1; $i <= 5; $i++) {

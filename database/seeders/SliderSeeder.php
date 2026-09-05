@@ -26,42 +26,70 @@ class SliderSeeder extends Seeder
 
         $dummyBanners = [
             1 => [
-                'source' => public_path('assets/banner.png'),
-                'target' => 'slider_1.png',
+                'sources' => [
+                    public_path('assets/beranda/B1.jfif'),
+                    public_path('assets/beranda/b1.jpg'),
+                    public_path('assets/banner.png'),
+                ],
+                'target' => 'slider_1.jfif',
             ],
             2 => [
-                'source' => public_path('assets/natal2.png'),
-                'target' => 'slider_2.png',
+                'sources' => [
+                    public_path('assets/beranda/b2.jpg'),
+                    public_path('assets/natal2.png'),
+                ],
+                'target' => 'slider_2.jpg',
             ],
             3 => [
-                'source' => public_path('assets/maniescakery2.png'),
-                'target' => 'slider_3.png',
+                'sources' => [
+                    public_path('assets/beranda/b3.jfif'),
+                    public_path('assets/beranda/b3.jpg'),
+                    public_path('assets/maniescakery2.png'),
+                ],
+                'target' => 'slider_3.jfif',
             ],
             4 => [
-                'source' => public_path('assets/hampers/Hampers-M.png'),
+                'sources' => [
+                    public_path('assets/beranda/b4.png'),
+                    public_path('assets/hampers/Hampers-M.png'),
+                ],
                 'target' => 'slider_4.png',
             ],
             5 => [
-                'source' => public_path('assets/produk/Cake-M.png'),
+                'sources' => [
+                    public_path('assets/beranda/b5.png'),
+                    public_path('assets/produk/Cake-M.png'),
+                ],
                 'target' => 'slider_5.png',
             ],
         ];
 
         foreach ($dummyBanners as $id => $banner) {
-            if (File::exists($banner['source'])) {
-                // Copy to storage/app/public/slider
-                File::copy($banner['source'], $storageSliderDir . '/' . $banner['target']);
-
-                // Also copy to public/storage/slider if not symlinked
-                if (File::exists($publicStorageSliderDir) && !is_link(public_path('storage'))) {
-                    File::copy($banner['source'], $publicStorageSliderDir . '/' . $banner['target']);
+            $foundSource = null;
+            foreach ($banner['sources'] as $src) {
+                if (File::exists($src)) {
+                    $foundSource = $src;
+                    break;
                 }
             }
 
-            Slider::updateOrCreate(
-                ['id' => $id],
-                ['gambar' => $banner['target']]
-            );
+            if ($foundSource) {
+                $ext = pathinfo($foundSource, PATHINFO_EXTENSION);
+                $targetFile = "slider_{$id}.{$ext}";
+
+                // Copy to storage/app/public/slider
+                File::copy($foundSource, $storageSliderDir . '/' . $targetFile);
+
+                // Also copy to public/storage/slider if not symlinked
+                if (File::exists($publicStorageSliderDir) && !is_link(public_path('storage'))) {
+                    File::copy($foundSource, $publicStorageSliderDir . '/' . $targetFile);
+                }
+
+                Slider::updateOrCreate(
+                    ['id' => $id],
+                    ['gambar' => $targetFile]
+                );
+            }
         }
     }
 }

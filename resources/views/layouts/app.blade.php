@@ -247,8 +247,11 @@
     </div>
     @endif
 
+    <!-- Fullscreen Hero Section (If present) -->
+    @yield('hero')
+
     <!-- Main Content Container -->
-    <main class="flex-grow max-w-[1720px] w-full mx-auto px-4 sm:px-6 lg:px-10 py-8">
+    <main class="flex-grow max-w-[1720px] w-full mx-auto px-4 sm:px-6 lg:px-10 {{ request()->is('/') ? 'py-12' : 'py-8' }}">
         @yield('content')
     </main>
 
@@ -402,7 +405,7 @@
 
         <!-- Bottom Copyright Bar -->
         <div class="border-t border-white/10 bg-[#1E1712] py-5 px-4 text-center text-xs text-white/50">
-            <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+            <div class="max-w-[1720px] w-full mx-auto px-4 sm:px-6 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-2">
                 <p>&copy; {{ date('Y') }} <strong>Manies Cakery</strong>. All rights reserved.</p>
                 <p class="text-[11px] text-white/40">PBL IF 2A Malam • Politeknik Negeri Batam</p>
             </div>
