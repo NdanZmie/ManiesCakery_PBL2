@@ -19,46 +19,53 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        $user = User::where('username', $request->username)->first();
+        $user = User::where('username', $request->username)
+            ->orWhere('email', $request->username)
+            ->first();
 
         if (!$user) {
-            return back()->withErrors(['Username tidak ditemukan'])->withInput();
+            return back()->withErrors(['Username atau Email tidak ditemukan'])->withInput();
         }
 
         if (!Hash::check($request->password, $user->password)) {
             return back()->withErrors(['Password salah'])->withInput();
         }
 
+        $user->update(['last_login_at' => now()]);
         Auth::login($user);
+
+        if (in_array($user->role, ['admin', 'superadmin'])) {
+            return redirect()->intended('/dashboard');
+        }
+
         return redirect()->intended('/');
     }
-public function showLoginForm()
-{
-    return view('pages.login');
-}
 
+    public function showLoginForm()
+    {
+        return view('pages.login');
+    }
 
-// Function Login sebagai Guest
-   public function guestLogin()
-{
-    // Buat user baru dengan username dan email acak
-    $randomUsername = 'guest_' . Str::random(5); // contoh: guest_f93a7
-    $randomEmail = $randomUsername . '@guest.test';
+    // Function Login sebagai Guest
+    public function guestLogin()
+    {
+        $randomUsername = 'guest_' . Str::lower(Str::random(6));
+        $randomEmail = $randomUsername . '@guest.test';
 
-    $guest = User::create([
-        'name' => 'Guest User',
-        'username' => $randomUsername,
-        'email' => $randomEmail,
-        'telepon' => '0000000000',
-        'password' => bcrypt(Str::random(10)), // random password
-        'role' => 'guest',
-    ]);
+        $guest = User::create([
+            'name' => 'Guest User',
+            'username' => $randomUsername,
+            'email' => $randomEmail,
+            'telepon' => '0000000000',
+            'password' => Hash::make(Str::random(12)),
+            'role' => 'guest',
+            'last_login_at' => now(),
+        ]);
 
-    Auth::login($guest);
+        Auth::login($guest);
 
-   return redirect('/');
-
-}
+        return redirect('/');
+    }
 
 // Function hapus user guest saat logout
 public function logout(Request $request)

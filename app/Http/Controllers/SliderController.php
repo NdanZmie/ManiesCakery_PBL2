@@ -20,34 +20,43 @@ class SliderController extends Controller
 
     return $sliders;
 }
-public function update(Request $request)
-{
-    for ($i = 1; $i <= 5; $i++) {
-        $inputName = "sliderImage{$i}";
+    public function update(Request $request)
+    {
+        $request->validate([
+            'sliderImage1' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+            'sliderImage2' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+            'sliderImage3' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+            'sliderImage4' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+            'sliderImage5' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+        ]);
 
-        if ($request->hasFile($inputName)) {
-            $file = $request->file($inputName);
+        for ($i = 1; $i <= 5; $i++) {
+            $inputName = "sliderImage{$i}";
 
-            // Simpan file dengan nama sesuai slot
-            $filename = "slider_{$i}." . $file->getClientOriginalExtension();
+            if ($request->hasFile($inputName)) {
+                $file = $request->file($inputName);
 
-            // Hapus file lama (jika ada)
-            $oldFile = Slider::find($i)?->gambar;
-            if ($oldFile && Storage::disk('public')->exists("slider/{$oldFile}")) {
-                Storage::disk('public')->delete("slider/{$oldFile}");
+                // Simpan file dengan nama sesuai slot
+                $filename = "slider_{$i}." . $file->getClientOriginalExtension();
+
+                // Hapus file lama (jika ada)
+                $oldFile = Slider::find($i)?->gambar;
+                if ($oldFile && Storage::disk('public')->exists("slider/{$oldFile}")) {
+                    Storage::disk('public')->delete("slider/{$oldFile}");
+                }
+
+                // Simpan file baru
+                Storage::disk('public')->putFileAs('slider', $file, $filename);
+
+                // Update / buat baris baru di database
+                Slider::updateOrCreate(
+                    ['id' => $i],
+                    ['gambar' => $filename]
+                );
             }
-
-            // Simpan file baru
-            Storage::disk('public')->putFileAs('slider', $file, $filename);
-
-            // Update nama file di database
-            Slider::where('id', $i)->update([
-                'gambar' => $filename
-            ]);
         }
-    }
 
-    return back()->with('success', 'Slider berhasil diperbarui.');
-}
+        return back()->with('success', 'Slider berhasil diperbarui.');
+    }
 
 }

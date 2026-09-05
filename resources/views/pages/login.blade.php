@@ -81,20 +81,26 @@
             <hr class="w-1/4 border" />
         </div>
 
+        <div class="flex justify-center mt-4">
+            <a href="{{ route('login.guest') }}" class="w-full text-center py-3 px-4 border border-[#4B372F] text-[#4B372F] font-semibold rounded-lg hover:bg-[#4B372F] hover:text-white transition duration-150 text-sm">
+                Masuk sebagai Tamu (Guest)
+            </a>
+        </div>
 
         <p class="text-sm text-center text-gray-600 mt-6">
-            Belum Punya Akun?? <a href="{{ route('register') }}" class="font-semibold text-[#4B372F] hover:underline">Daftar </a>
+            Belum Punya Akun? <a href="{{ route('register') }}" class="font-semibold text-[#4B372F] hover:underline">Daftar</a>
         </p>
     </div>
 </div>
 @endsection
+
+@push('scripts')
 <script>
     function togglePassword(inputId, el) {
         const input = document.getElementById(inputId);
         const isPassword = input.type === "password";
         input.type = isPassword ? "text" : "password";
 
-        // Ganti icon (opsional - tetap pakai icon yang sama di sini)
         el.innerHTML = isPassword
             ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 
@@ -110,3 +116,4 @@
                </svg>`;
     }
 </script>
+@endpush

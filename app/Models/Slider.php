@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Slider extends Model
 {
-    protected $table = 'slider'; // atau 'sliders' jika nama tabel jamak
+    protected $table = 'slider';
 
     protected $fillable = [
+        'id',
         'gambar',
     ];
 
-    public $timestamps = false;
+    public $timestamps = true;
 }

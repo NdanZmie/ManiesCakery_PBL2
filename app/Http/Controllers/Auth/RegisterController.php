@@ -20,17 +20,22 @@ class RegisterController extends Controller
             'username' => 'required|string|max:255|unique:user,username',
             'email'    => 'required|email|max:255|unique:user,email',
             'password' => 'required|string|min:6|confirmed',
-            'role'     => 'required|in:admin,superadmin',
+            'role'     => 'required|in:user,admin,superadmin',
             'bypass_password' => 'required_if:role,admin,superadmin',
         ]);
 
-        // Cek password bypass sesuai role
-        $isBypassValid =
-            ($request->role === 'admin' && $request->bypass_password === '123456') ||
-            ($request->role === 'superadmin' && $request->bypass_password === '121233');
+        // Cek password bypass jika mendaftar sebagai admin / superadmin
+        if (in_array($request->role, ['admin', 'superadmin'])) {
+            $adminKey = env('ADMIN_REGISTRATION_KEY', '123456');
+            $superadminKey = env('SUPERADMIN_REGISTRATION_KEY', '121233');
 
-        if (!$isBypassValid) {
-            return back()->withErrors(['bypass_password' => 'Password bypass salah'])->withInput();
+            $isBypassValid =
+                ($request->role === 'admin' && $request->bypass_password === $adminKey) ||
+                ($request->role === 'superadmin' && $request->bypass_password === $superadminKey);
+
+            if (!$isBypassValid) {
+                return back()->withErrors(['bypass_password' => 'Password bypass untuk role ini salah.'])->withInput();
+            }
         }
 
         User::create([
