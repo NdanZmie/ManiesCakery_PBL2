@@ -22,11 +22,6 @@
                     >
                 </a>
                 
-                <div class="mb-2">
-                    <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-100 border border-amber-200 text-amber-900 text-xs font-bold uppercase tracking-wider">
-                        ✨ Selamat Datang Kembali
-                    </span>
-                </div>
                 <h1 class="text-2xl sm:text-3xl font-bold text-[#332B25] font-serif">
                     Masuk ke Akun Anda
                 </h1>
