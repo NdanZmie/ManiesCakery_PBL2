@@ -9,33 +9,35 @@
 
 ---
 
+## 🌟 Edisi Pengembangan: Hamdan Azmi Version
+
+> **Catatan Proyek:**  
+> Repository ini merupakan **Versi Refactor & Modernisasi oleh Hamdan Azmi** (*NIM: 3312411004*).  
+> 🔗 **Repository Asli Kelompok (Original Team Repository):** [https://github.com/deaasnuari/maniescakeryPBL2.git](https://github.com/deaasnuari/maniescakeryPBL2.git)
+
+---
+
 ## 📄 Identitas Kelompok 3 (Manies Cakery PBL 2)
 
 | NIM | Nama Lengkap | Peran / Kontribusi | Posisi |
 | :--- | :--- | :--- | :--- |
-| **3312411001** | Dea Asnuari | Frontend & Backend Development | Ketua Tim |
-| **3312411004** | Hamdan Azmi | Frontend & Backend Development | Anggota Tim |
-| **3312411008** | Christian Marcelino | Frontend & Backend Development | Anggota Tim |
-| **3312411031** | Fatra Syahreza | Frontend & Backend Development | Anggota Tim |
+| **3312411004** | **Hamdan Azmi** | Frontend & Backend Development (Refactored & Modernized Edition) | Anggota Tim |
+| **3312411001** | **Dea Asnuari** | Frontend & Backend Development | Ketua Tim |
+| **3312411008** | **Christian Marcelino** | Frontend & Backend Development | Anggota Tim |
+| **3312411031** | **Fatra Syahreza** | Frontend & Backend Development | Anggota Tim |
 
 ---
 
-## 🔗 Tautan Media & Berkas Pendukung
+## 🔗 Tautan Repository
 
-- 🎥 **Link Video Presentasi:**  
-  [https://youtu.be/IwjETgcDqxo](https://youtu.be/IwjETgcDqxo)
-
-- 🎬 **Link Video Demonstrasi Aplikasi:**  
-  [https://youtu.be/7kyzS2FiB9M](https://youtu.be/7kyzS2FiB9M)
-
-- 💻 **Link GitHub Repository Utama:**  
+- 💻 **GitHub Repository (Refactored Version by Hamdan Azmi):**  
   [https://github.com/NdanZmie/ManiesCakery_PBL2](https://github.com/NdanZmie/ManiesCakery_PBL2)
 
-- 📁 **Link Google Drive (Dokumentasi Lengkap):**  
-  [https://drive.google.com/drive/folders/1V4q574awOzFtXxhyko7kDMahntyJ1iEE?usp=sharing](https://drive.google.com/drive/folders/1V4q574awOzFtXxhyko7kDMahntyJ1iEE?usp=sharing)
+- 📦 **GitHub Repository Asli Kelompok (Original Project):**  
+  [https://github.com/deaasnuari/maniescakeryPBL2.git](https://github.com/deaasnuari/maniescakeryPBL2.git)
 
 ---
 
 ## 📌 Hak Cipta & Lisensi
 Proyek ini dibuat untuk tujuan akademik dan implementasi digitalisasi UMKM dalam kegiatan **Project-Based Learning (PBL)** Politeknik Negeri Batam.
-Semua hak cipta dan kepemilikan kode milik Kelompok 3 – IF 2A Malam.
+Semua hak cipta dan kepemilikan kode dasar milik Kelompok 3 – IF 2A Malam.

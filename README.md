@@ -11,23 +11,23 @@
 
 Platform Web CMS & E-Commerce Bakery Modern **"Manies Cakery"**
 
+> 🌟 **Catatan Edisi Pengembangan:**  
+> Repository ini adalah **Versi Refactor & Modernisasi oleh Hamdan Azmi** (*NIM: 3312411004*).  
+> 🔗 **Repository Asli Kelompok (Original Team Repo):** [https://github.com/deaasnuari/maniescakeryPBL2.git](https://github.com/deaasnuari/maniescakeryPBL2.git)
+
 | NIM | Nama Lengkap | Peran / Kontribusi | Posisi |
 | :--- | :--- | :--- | :--- |
+| **3312411004** | **Hamdan Azmi** | Frontend & Backend Development (Refactored & Modernized Edition) | Anggota Tim |
 | **3312411001** | **Dea Asnuari** | Frontend & Backend Development | Ketua Tim |
-| **3312411004** | **Hamdan Azmi** | Frontend & Backend Development | Anggota Tim |
 | **3312411008** | **Christian Marcelino** | Frontend & Backend Development | Anggota Tim |
 | **3312411031** | **Fatra Syahreza** | Frontend & Backend Development | Anggota Tim |
-
-### 🔗 Tautan Media & Berkas Pendukung
-- 🎥 **Link Video Presentasi:** [https://youtu.be/IwjETgcDqxo](https://youtu.be/IwjETgcDqxo)
-- 🎬 **Link Video Demonstrasi:** [https://youtu.be/7kyzS2FiB9M](https://youtu.be/7kyzS2FiB9M)
-- 💻 **Link GitHub Repository:** [https://github.com/NdanZmie/ManiesCakery_PBL2](https://github.com/NdanZmie/ManiesCakery_PBL2)
-- 📁 **Link Google Drive (Dokumentasi Lengkap):** [https://drive.google.com/drive/folders/1V4q574awOzFtXxhyko7kDMahntyJ1iEE?usp=sharing](https://drive.google.com/drive/folders/1V4q574awOzFtXxhyko7kDMahntyJ1iEE?usp=sharing)
 
 ---
 
 # 🍰 Manies Cakery — E-Commerce & Bakery CMS Platform
 
+[![Refactored By](https://img.shields.io/badge/Refactored_By-Hamdan_Azmi-DFAC6B?style=for-the-badge&logo=github&logoColor=18110D)](https://github.com/NdanZmie)
+[![Original Repo](https://img.shields.io/badge/Original_Repo-deaasnuari%2FmaniescakeryPBL2-blue?style=for-the-badge&logo=git&logoColor=white)](https://github.com/deaasnuari/maniescakeryPBL2.git)
 [![Laravel](https://img.shields.io/badge/Laravel-11.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
 [![PHP](https://img.shields.io/badge/PHP-8.3-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
 [![Livewire](https://img.shields.io/badge/Livewire-3.x-FB70A9?style=for-the-badge&logo=livewire&logoColor=white)](https://livewire.laravel.com)
@@ -127,4 +127,5 @@ php artisan test
 ---
 
 ## 📌 Lisensi & Hak Cipta
-Dikembangkan oleh **Kelompok 3 — IF 2A Malam**, Politeknik Negeri Batam untuk kegiatan Project-Based Learning (PBL) 2024/2025.
+- Dikembangkan dalam kegiatan **Project-Based Learning (PBL)** Politeknik Negeri Batam oleh **Kelompok 3 — IF 2A Malam**.
+- Edisi modernisasi & refactoring oleh **Hamdan Azmi** (*NIM: 3312411004*).
