@@ -63,6 +63,13 @@
                         <span>Tentang Kami</span>
                         <span class="absolute bottom-0 left-0 h-[2.5px] bg-[#DFAC6B] rounded-full transition-all duration-300 {{ request()->routeIs('about.*') ? 'w-full shadow-[0_0_10px_rgba(223,172,107,0.9)]' : 'w-0 group-hover:w-full' }}"></span>
                     </a>
+                    <a 
+                        href="{{ route('docs.index') }}" 
+                        class="group relative py-2 text-xs lg:text-sm font-bold tracking-wide transition-all duration-300 {{ request()->routeIs('docs.*') ? 'text-[#DFAC6B]' : 'text-white/80 hover:text-[#DFAC6B]' }}"
+                    >
+                        <span>Dokumentasi</span>
+                        <span class="absolute bottom-0 left-0 h-[2.5px] bg-[#DFAC6B] rounded-full transition-all duration-300 {{ request()->routeIs('docs.*') ? 'w-full shadow-[0_0_10px_rgba(223,172,107,0.9)]' : 'w-0 group-hover:w-full' }}"></span>
+                    </a>
                 </nav>
 
                 <!-- Desktop User & Action Buttons (Refactored Glass & Shine Theme) -->
@@ -163,6 +170,13 @@
                 class="flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-bold {{ request()->routeIs('about.*') ? 'text-[#241C16] bg-gradient-to-r from-[#DFAC6B] to-[#E8BE88] shadow-md' : 'text-white/90 hover:text-[#DFAC6B] hover:bg-white/5' }}"
             >
                 <span>Tentang Kami</span>
+                <span class="text-xs">&rarr;</span>
+            </a>
+            <a 
+                href="{{ route('docs.index') }}" 
+                class="flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-bold {{ request()->routeIs('docs.*') ? 'text-[#241C16] bg-gradient-to-r from-[#DFAC6B] to-[#E8BE88] shadow-md' : 'text-white/90 hover:text-[#DFAC6B] hover:bg-white/5' }}"
+            >
+                <span>Dokumentasi</span>
                 <span class="text-xs">&rarr;</span>
             </a>
 

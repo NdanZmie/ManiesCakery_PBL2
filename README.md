@@ -1,3 +1,31 @@
+<p align="center">
+  <img src="logo-polibatam.png" width="180" alt="Logo Politeknik Negeri Batam">
+</p>
+
+<h1 align="center">Politeknik Negeri Batam</h1>
+<p align="center"><strong>Jurusan Teknik Informatika — Program Studi D3 Teknik Informatika (IF 2A Malam)</strong></p>
+
+---
+
+## 🍰 Project-Based Learning (PBL) — Kelompok 3
+
+Platform Web CMS & E-Commerce Bakery Modern **"Manies Cakery"**
+
+| NIM | Nama Lengkap | Peran / Kontribusi | Posisi |
+| :--- | :--- | :--- | :--- |
+| **3312411001** | **Dea Asnuari** | Frontend & Backend Development | Ketua Tim |
+| **3312411004** | **Hamdan Azmi** | Frontend & Backend Development | Anggota Tim |
+| **3312411008** | **Christian Marcelino** | Frontend & Backend Development | Anggota Tim |
+| **3312411031** | **Fatra Syahreza** | Frontend & Backend Development | Anggota Tim |
+
+### 🔗 Tautan Media & Berkas Pendukung
+- 🎥 **Link Video Presentasi:** [https://youtu.be/IwjETgcDqxo](https://youtu.be/IwjETgcDqxo)
+- 🎬 **Link Video Demonstrasi:** [https://youtu.be/7kyzS2FiB9M](https://youtu.be/7kyzS2FiB9M)
+- 💻 **Link GitHub Repository:** [https://github.com/NdanZmie/ManiesCakery_PBL2](https://github.com/NdanZmie/ManiesCakery_PBL2)
+- 📁 **Link Google Drive (Dokumentasi Lengkap):** [https://drive.google.com/drive/folders/1V4q574awOzFtXxhyko7kDMahntyJ1iEE?usp=sharing](https://drive.google.com/drive/folders/1V4q574awOzFtXxhyko7kDMahntyJ1iEE?usp=sharing)
+
+---
+
 # 🍰 Manies Cakery — E-Commerce & Bakery CMS Platform
 
 [![Laravel](https://img.shields.io/badge/Laravel-11.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
@@ -64,6 +92,7 @@ Akses aplikasi melalui browser: [http://localhost:8000](http://localhost:8000)
 - **Katalog & Filter Kategori**: Penjelajahan kue (*Cake, Brownies, Cookies, Hampers, Small Cake, Cupcake*).
 - **Detail Produk & Direct Order**: Menghubungkan langsung ke WhatsApp dengan teks pesanan terformat otomatis.
 - **Floating WhatsApp Widget**: Tombol live chat interaktif di pojok kanan bawah.
+- **Halaman Dokumentasi Web**: Dokumentasi interaktif langsung di dalam website (`/dokumentasi`).
 - **Autentikasi Fleksibel**: Pendaftaran pengguna, login email/username, mode tamu (*Guest*), dan lupa password.
 
 ### 👑 Panel Administrasi (Admin Workspace)
@@ -78,7 +107,7 @@ Akses aplikasi melalui browser: [http://localhost:8000](http://localhost:8000)
 
 ## 🧪 Pengujian Otomatis (Automated Testing)
 
-Sistem telah dilengkapi dengan test suite lengkap (16 Unit & Feature Tests) untuk memastikan keamanan rute, otentikasi, dan logika bisnis.
+Sistem telah dilengkapi dengan test suite lengkap (16 Unit & Feature Tests) untuk memastikan keamanan rute, otentikasi, dan logika bisnis:
 ```bash
 php artisan test
 ```
@@ -86,8 +115,6 @@ php artisan test
 ---
 
 ## 📚 Dokumentasi Lengkap (Folder `docs/`)
-
-Dokumentasi sistem telah dipisahkan per konteks untuk kemudahan pemeliharaan:
 
 - 📖 [01. Panduan Instalasi & Setup Lengkap](docs/01-installation-and-setup.md)
 - 🏛️ [02. Arsitektur Perangkat Lunak & Struktur Proyek](docs/02-architecture-and-structure.md)

@@ -54,6 +54,12 @@ Route::get('/about_us', function () {
     return redirect()->route('about.index');
 })->name('about_us');
 
+// Project Documentation
+Route::get('/dokumentasi', [\App\Http\Controllers\DocsController::class, 'index'])->name('docs.index');
+Route::get('/docs', function () {
+    return redirect()->route('docs.index');
+})->name('docs');
+
 /*
 |--------------------------------------------------------------------------
 | Authentication Routes
