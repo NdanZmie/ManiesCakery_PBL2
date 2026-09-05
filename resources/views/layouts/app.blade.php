@@ -73,28 +73,28 @@
                     </div>
                 </a>
 
-                <!-- Desktop Navigation Links (Floating Glass Pill Container) -->
-                <nav class="hidden md:flex items-center gap-1.5 glass-pill p-1.5 rounded-full shadow-inner border border-white/15">
+                <!-- Desktop Navigation Links (Clean Floating Links without Border/Frame) -->
+                <nav class="hidden md:flex items-center gap-7 lg:gap-10">
                     <a 
                         href="/" 
-                        class="px-5 py-2 rounded-full text-xs font-bold transition-all duration-300 flex items-center gap-1.5 {{ request()->is('/') ? 'bg-gradient-to-r from-[#DFAC6B] via-[#E8BE88] to-[#DFAC6B] text-[#241C16] shadow-md shadow-amber-500/25' : 'text-white/85 hover:text-white hover:bg-white/10' }}"
+                        class="group relative py-2 text-xs lg:text-sm font-bold tracking-wide transition-all duration-300 {{ request()->is('/') ? 'text-[#DFAC6B]' : 'text-white/80 hover:text-[#DFAC6B]' }}"
                     >
-                        <span>🏠</span>
                         <span>Beranda</span>
+                        <span class="absolute bottom-0 left-0 h-[2.5px] bg-[#DFAC6B] rounded-full transition-all duration-300 {{ request()->is('/') ? 'w-full shadow-[0_0_10px_rgba(223,172,107,0.9)]' : 'w-0 group-hover:w-full' }}"></span>
                     </a>
                     <a 
                         href="{{ route('produk.index', '*') }}" 
-                        class="px-5 py-2 rounded-full text-xs font-bold transition-all duration-300 flex items-center gap-1.5 {{ request()->routeIs('produk.*') ? 'bg-gradient-to-r from-[#DFAC6B] via-[#E8BE88] to-[#DFAC6B] text-[#241C16] shadow-md shadow-amber-500/25' : 'text-white/85 hover:text-white hover:bg-white/10' }}"
+                        class="group relative py-2 text-xs lg:text-sm font-bold tracking-wide transition-all duration-300 {{ request()->routeIs('produk.*') ? 'text-[#DFAC6B]' : 'text-white/80 hover:text-[#DFAC6B]' }}"
                     >
-                        <span>🍰</span>
                         <span>Katalog Produk</span>
+                        <span class="absolute bottom-0 left-0 h-[2.5px] bg-[#DFAC6B] rounded-full transition-all duration-300 {{ request()->routeIs('produk.*') ? 'w-full shadow-[0_0_10px_rgba(223,172,107,0.9)]' : 'w-0 group-hover:w-full' }}"></span>
                     </a>
                     <a 
                         href="{{ route('about.index') }}" 
-                        class="px-5 py-2 rounded-full text-xs font-bold transition-all duration-300 flex items-center gap-1.5 {{ request()->routeIs('about.*') ? 'bg-gradient-to-r from-[#DFAC6B] via-[#E8BE88] to-[#DFAC6B] text-[#241C16] shadow-md shadow-amber-500/25' : 'text-white/85 hover:text-white hover:bg-white/10' }}"
+                        class="group relative py-2 text-xs lg:text-sm font-bold tracking-wide transition-all duration-300 {{ request()->routeIs('about.*') ? 'text-[#DFAC6B]' : 'text-white/80 hover:text-[#DFAC6B]' }}"
                     >
-                        <span>📖</span>
                         <span>Tentang Kami</span>
+                        <span class="absolute bottom-0 left-0 h-[2.5px] bg-[#DFAC6B] rounded-full transition-all duration-300 {{ request()->routeIs('about.*') ? 'w-full shadow-[0_0_10px_rgba(223,172,107,0.9)]' : 'w-0 group-hover:w-full' }}"></span>
                     </a>
                 </nav>
 
@@ -179,24 +179,24 @@
         <div id="mobileMenu" class="hidden md:hidden glass-nav border-t border-white/10 px-4 pt-4 pb-6 space-y-2 transition-all duration-300">
             <a 
                 href="/" 
-                class="flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold {{ request()->is('/') ? 'text-[#241C16] bg-gradient-to-r from-[#DFAC6B] to-[#E8BE88] shadow-md' : 'text-white/90 hover:text-[#DFAC6B] hover:bg-white/5' }}"
+                class="flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-bold {{ request()->is('/') ? 'text-[#241C16] bg-gradient-to-r from-[#DFAC6B] to-[#E8BE88] shadow-md' : 'text-white/90 hover:text-[#DFAC6B] hover:bg-white/5' }}"
             >
-                <span>🏠</span> 
                 <span>Beranda</span>
+                <span class="text-xs">&rarr;</span>
             </a>
             <a 
                 href="{{ route('produk.index', '*') }}" 
-                class="flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold {{ request()->routeIs('produk.*') ? 'text-[#241C16] bg-gradient-to-r from-[#DFAC6B] to-[#E8BE88] shadow-md' : 'text-white/90 hover:text-[#DFAC6B] hover:bg-white/5' }}"
+                class="flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-bold {{ request()->routeIs('produk.*') ? 'text-[#241C16] bg-gradient-to-r from-[#DFAC6B] to-[#E8BE88] shadow-md' : 'text-white/90 hover:text-[#DFAC6B] hover:bg-white/5' }}"
             >
-                <span>🍰</span> 
                 <span>Katalog Produk</span>
+                <span class="text-xs">&rarr;</span>
             </a>
             <a 
                 href="{{ route('about.index') }}" 
-                class="flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold {{ request()->routeIs('about.*') ? 'text-[#241C16] bg-gradient-to-r from-[#DFAC6B] to-[#E8BE88] shadow-md' : 'text-white/90 hover:text-[#DFAC6B] hover:bg-white/5' }}"
+                class="flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-bold {{ request()->routeIs('about.*') ? 'text-[#241C16] bg-gradient-to-r from-[#DFAC6B] to-[#E8BE88] shadow-md' : 'text-white/90 hover:text-[#DFAC6B] hover:bg-white/5' }}"
             >
-                <span>📖</span> 
                 <span>Tentang Kami</span>
+                <span class="text-xs">&rarr;</span>
             </a>
 
             <div class="pt-4 border-t border-white/10 space-y-3">
