@@ -89,11 +89,7 @@
         <div class="relative z-20 max-w-[1720px] w-full h-full mx-auto px-6 sm:px-10 lg:px-16 flex flex-col justify-center pb-24 md:pb-28">
             <div class="max-w-3xl">
                 
-                <!-- Eyebrow Badge -->
-                <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-[#DFAC6B] text-xs font-bold uppercase tracking-wider mb-6 shadow-lg animate-fade-in">
-                    <span class="w-2 h-2 rounded-full bg-[#DFAC6B] animate-ping"></span>
-                    <span>Manies Cakery • Homemade Bakes & Pastry</span>
-                </div>
+
 
                 <!-- Animated Dynamic Title -->
                 <h1 id="heroTitle" class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.08] tracking-tight font-serif transition-all duration-500">
