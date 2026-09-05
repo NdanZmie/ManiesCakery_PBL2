@@ -1,115 +1,137 @@
 
 @extends('layouts.app')
-@section('title', 'Manies Cakery - Home')
+@section('title', 'Manies Cakery - Fresh Homemade Cakes, Brownies & Hampers')
 @section('content')
 
-<br>
+    <!-- Hero Banner Slider -->
+    <div class="relative w-full mb-12">
+        <div id="default-carousel" class="relative w-full" data-carousel="slide">
+            <!-- Carousel wrapper -->
+            <div class="relative h-64 sm:h-80 md:h-96 lg:h-[460px] overflow-hidden rounded-2xl md:rounded-3xl shadow-2xl border border-amber-950/10 bg-[#241C16]">
+                @for ($i = 1; $i <= 5; $i++)
+                    @php
+                        $slider = $sliders[$i - 1] ?? null;
+                        $sliderImg = ($slider && $slider->gambar) ? asset('storage/slider/' . $slider->gambar) : asset('assets/banner.png');
+                    @endphp
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="{{ $sliderImg }}"
+                             class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 brightness-[0.95] transition-transform duration-700 hover:scale-105"
+                             alt="Manies Cakery Banner {{ $i }}"
+                             onerror="this.src='{{ asset('assets/banner.png') }}'">
+                        <!-- Subtle Gradient Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10 pointer-events-none"></div>
+                    </div>
+                @endfor
+            </div>
 
-    <div id="default-carousel" class="relative w-full" data-carousel="slide">
-        <!-- Carousel wrapper -->
-      <div class="relative h-100 overflow-hidden rounded-lg md:h-130">
-    @for ($i = 1; $i <= 5; $i++)
-        @php
-            $slider = $sliders[$i - 1] ?? null;
-        @endphp
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            @if ($slider && $slider->gambar)
-                <img src="{{ asset('storage/slider/' . $slider->gambar) }}"
-                     class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                     alt="Slider {{ $i }}">
-            @else
-                <img src="{{ asset('assets/default.png') }}"
-                     class="absolute block w-full h-full object-cover opacity-40 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                     alt="Default Slider {{ $i }}">
-            @endif
+            <!-- Slider indicators -->
+            <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-2.5 rtl:space-x-reverse bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
+                <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+                <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+                <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+                <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+                <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+            </div>
+
+            <!-- Slider controls -->
+            <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+                <span class="inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/20 group-hover:bg-[#DFAC6B] group-hover:text-[#241C16] text-white transition-all shadow-lg">
+                    <svg class="w-5 h-5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 1 1 5l4 4"/>
+                    </svg>
+                    <span class="sr-only">Previous</span>
+                </span>
+            </button>
+            <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+                <span class="inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/20 group-hover:bg-[#DFAC6B] group-hover:text-[#241C16] text-white transition-all shadow-lg">
+                    <svg class="w-5 h-5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m1 9 4-4-4-4"/>
+                    </svg>
+                    <span class="sr-only">Next</span>
+                </span>
+            </button>
         </div>
-    @endfor
-</div>
-        <!-- Slider indicators -->
-         <div class="absolute z-40 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-        <button type="button" class="w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-        <button type="button" class="w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-        <button type="button" class="w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-        <button type="button" class="w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-        <button type="button" class="w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
-    </div>
-        <!-- Slider controls -->
-        <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
-                <svg class="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-                </svg>
-                <span class="sr-only">Previous</span>
-            </span>
-        </button>
-        <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
-                <svg class="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                </svg>
-                <span class="sr-only">Next</span>
-            </span>
-        </button>
-    </div>
-<br><br>
 
-    <!-- Tombol Edit di bawah slider -->
-    <div class="flex justify-end mb-4">
+        <!-- Tombol Edit Slider (Khusus Admin / Superadmin) -->
         @if (Auth::check() && in_array(Auth::user()->role, ['admin', 'superadmin']))
-    <div class="flex justify-end mb-4">
-        <button data-modal-target="sliderEditModal" data-modal-toggle="sliderEditModal" class="bg-blue-500 text-white px-4 py-2 rounded">
-            Edit Slider
-        </button>
-    </div>
-@endif
+            <div class="flex justify-end mt-4">
+                <button 
+                    id="editSliderButton"
+                    data-modal-target="sliderEditModal" 
+                    data-modal-toggle="sliderEditModal" 
+                    class="inline-flex items-center gap-2 bg-gradient-to-r from-[#DFAC6B] to-[#C9934E] text-[#241C16] px-5 py-2.5 rounded-xl font-bold text-xs shadow-md hover:shadow-lg hover:brightness-105 transition-all"
+                >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span>Kelola Slider Beranda</span>
+                </button>
+            </div>
+        @endif
     </div>
 
     <!-- Modal Popup untuk Edit Gambar Slider -->
-    <!-- Modal Edit Slider (Flowbite compatible) -->
-<div id="sliderEditModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full bg-black/50">
-  <div class="relative w-full max-w-2xl h-full md:h-auto mx-auto mt-20">
-    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-      <!-- Header -->
-      <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-          Edit Gambar Slider
-        </h3>
-        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ms-auto inline-flex items-center" data-modal-hide="sliderEditModal">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M6 18L18 6M6 6l12 12" />
-          </svg>
-          <span class="sr-only">Close</span>
-        </button>
-      </div>
+    <div id="sliderEditModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-black/60 backdrop-blur-sm">
+        <div class="relative w-full max-w-2xl max-h-full mx-auto mt-10">
+            <div class="relative bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
+                <!-- Header -->
+                <div class="flex items-center justify-between p-5 bg-[#241C16] text-white">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-lg bg-[#DFAC6B]/20 text-[#DFAC6B] flex items-center justify-center font-bold">
+                            🖼️
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-white">Edit Gambar Slider Beranda</h3>
+                            <p class="text-xs text-white/70">Upload gambar baru (PNG, JPG, WebP) untuk mengganti banner slide.</p>
+                        </div>
+                    </div>
+                    <button type="button" id="closeModalButton" class="text-white/70 hover:text-white bg-white/10 hover:bg-white/20 rounded-lg text-sm p-2 ms-auto inline-flex items-center transition-colors" data-modal-hide="sliderEditModal">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        <span class="sr-only">Tutup</span>
+                    </button>
+                </div>
 
-      <!-- Body -->
-      <form action="{{ route('slider.update') }}" method="POST" enctype="multipart/form-data" class="p-6 space-y-4">
-    @csrf
-    @method('POST')
+                <!-- Body -->
+                <form action="{{ route('slider.update') }}" method="POST" enctype="multipart/form-data" class="p-6 space-y-4">
+                    @csrf
+                    @method('POST')
 
-    @for ($i = 1; $i <= 5; $i++)
-        <div>
-            <label for="sliderImage{{ $i }}" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Gambar Slider {{ $i }}</label>
-            <input type="file" id="sliderImage{{ $i }}" name="sliderImage{{ $i }}" accept="image/*"
-                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none">
+                    @for ($i = 1; $i <= 5; $i++)
+                        @php
+                            $sliderItem = $sliders[$i - 1] ?? null;
+                            $thumbImg = ($sliderItem && $sliderItem->gambar) ? asset('storage/slider/' . $sliderItem->gambar) : asset('assets/banner.png');
+                        @endphp
+                        <div class="flex items-center gap-4 p-3.5 bg-[#FAF7F2] rounded-xl border border-amber-950/10">
+                            <!-- Thumbnail Preview -->
+                            <div class="w-20 h-14 rounded-lg overflow-hidden bg-stone-900 border border-amber-950/20 shrink-0 shadow-inner">
+                                <img src="{{ $thumbImg }}" class="w-full h-full object-cover" alt="Slide {{ $i }}" onerror="this.src='{{ asset('assets/banner.png') }}'">
+                            </div>
+                            <!-- Input -->
+                            <div class="flex-1">
+                                <label for="sliderImage{{ $i }}" class="block mb-1 text-xs font-bold text-[#332B25]">
+                                    Gambar Slide {{ $i }} <span class="text-gray-400 font-normal">({{ $sliderItem ? $sliderItem->gambar : 'Default' }})</span>
+                                </label>
+                                <input type="file" id="sliderImage{{ $i }}" name="sliderImage{{ $i }}" accept="image/*"
+                                    class="block w-full text-xs text-gray-700 border border-gray-200 rounded-lg cursor-pointer bg-white file:mr-3 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-[#DFAC6B] file:text-[#241C16] hover:file:bg-[#C9934E] transition-all">
+                            </div>
+                        </div>
+                    @endfor
+
+                    <!-- Footer -->
+                    <div class="flex justify-end pt-4 space-x-3 border-t border-gray-100">
+                        <button type="button" data-modal-hide="sliderEditModal" class="px-5 py-2.5 rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-100 font-semibold text-xs transition-colors">
+                            Batal
+                        </button>
+                        <button type="submit" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#DFAC6B] to-[#C9934E] text-[#241C16] font-bold text-xs shadow-md hover:shadow-lg hover:brightness-105 transition-all">
+                            Simpan Perubahan
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
-    @endfor
-
-    <!-- Footer -->
-    <div class="flex justify-end pt-4 space-x-2 border-t border-gray-200 dark:border-gray-600">
-        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded">
-            Simpan
-        </button>
-        <button type="button" data-modal-hide="sliderEditModal" class="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded">
-            Tutup
-        </button>
     </div>
-</form>
-    </div>
-  </div>
-</div>
 
 
     <section class="flex justify-between items-center">

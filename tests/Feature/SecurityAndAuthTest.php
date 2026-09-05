@@ -137,5 +137,15 @@ class SecurityAndAuthTest extends TestCase
         $res->assertStatus(302);
         $this->assertDatabaseMissing('kategori', ['nama' => $cat->nama]);
     }
+
+    /**
+     * Home page loads successfully with slider banners.
+     */
+    public function test_home_page_renders_slider_banners(): void
+    {
+        $response = $this->get('/');
+        $response->assertStatus(200);
+        $response->assertSee('default-carousel');
+    }
 }
 
