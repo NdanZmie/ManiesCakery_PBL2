@@ -25,23 +25,31 @@
     <!-- Top Announcement & Store Info Bar (Glass Theme) -->
     <div class="glass-topbar text-[#DFAC6B] text-[11px] md:text-xs py-2 px-4 shadow-sm relative z-50">
         <div class="max-w-[1720px] w-full mx-auto px-4 sm:px-6 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-2">
-            <div class="flex items-center gap-3 md:gap-5 text-center sm:text-left text-white/80">
-                <span class="inline-flex items-center gap-1.5 bg-white/5 px-2.5 py-0.5 rounded-full border border-white/10 backdrop-blur-md">
-                    <span class="text-amber-400">📍</span> Batam, Kepri
+            <div class="flex items-center gap-3 md:gap-4 text-center sm:text-left text-white/80">
+                <span class="inline-flex items-center gap-1.5 bg-white/5 hover:bg-white/10 px-3 py-0.5 rounded-full border border-white/10 backdrop-blur-md transition-colors">
+                    <span class="text-amber-400">📍</span> 
+                    <span class="font-medium text-white/90">Batam, Kepri</span>
                 </span>
                 <span class="hidden md:inline text-white/20">•</span>
-                <span class="hidden md:inline-flex items-center gap-1.5 bg-white/5 px-2.5 py-0.5 rounded-full border border-white/10 backdrop-blur-md">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Buka Setiap Hari (08.00 - 20.00 WIB)
+                <span class="hidden md:inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 px-3 py-0.5 rounded-full border border-white/10 backdrop-blur-md transition-colors">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span class="font-medium text-white/90">Buka Setiap Hari (08.00 - 20.00 WIB)</span>
                 </span>
             </div>
             
             <div class="flex items-center gap-3">
-                <span class="text-white/90 font-medium hidden sm:inline">✨ Freshly Baked Daily</span>
+                <span class="text-white/90 font-medium hidden sm:inline-flex items-center gap-1.5 bg-white/5 px-2.5 py-0.5 rounded-full border border-white/10">
+                    <span>✨</span>
+                    <span>100% Freshly Baked Daily</span>
+                </span>
                 <span class="text-white/20 hidden sm:inline">•</span>
                 <a 
                     href="https://wa.me/6289665314602" 
                     target="_blank" 
-                    class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 hover:bg-[#DFAC6B] text-[#DFAC6B] hover:text-[#241C16] border border-white/15 transition-all duration-300 font-semibold shadow-sm"
+                    class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/10 hover:bg-[#DFAC6B] text-[#DFAC6B] hover:text-[#241C16] border border-white/15 hover:border-transparent transition-all duration-300 font-bold shadow-sm transform hover:scale-105 active:scale-95"
                 >
                     <span>📱 WA: 0896-6531-4602</span>
                 </a>
@@ -56,45 +64,48 @@
                 
                 <!-- Brand Logo with Glowing Hover Accent -->
                 <a href="/" class="flex items-center gap-3 group relative">
-                    <div class="relative py-1">
+                    <div class="relative py-1 flex items-center gap-3">
                         <img 
                             src="{{ asset('assets/maniescakery2.png') }}" 
                             alt="Manies Cakery Logo" 
-                            class="h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_4px_12px_rgba(223,172,107,0.3)]"
+                            class="h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_4px_16px_rgba(223,172,107,0.35)]"
                         >
                     </div>
                 </a>
 
                 <!-- Desktop Navigation Links (Floating Glass Pill Container) -->
-                <nav class="hidden md:flex items-center gap-1.5 glass-pill p-1.5 rounded-full shadow-inner">
+                <nav class="hidden md:flex items-center gap-1.5 glass-pill p-1.5 rounded-full shadow-inner border border-white/15">
                     <a 
                         href="/" 
-                        class="px-5 py-2 rounded-full text-xs font-bold transition-all duration-300 {{ request()->is('/') ? 'bg-gradient-to-r from-[#DFAC6B] via-[#E8BA7E] to-[#DFAC6B] text-[#241C16] shadow-md shadow-amber-500/20' : 'text-white/85 hover:text-white hover:bg-white/10' }}"
+                        class="px-5 py-2 rounded-full text-xs font-bold transition-all duration-300 flex items-center gap-1.5 {{ request()->is('/') ? 'bg-gradient-to-r from-[#DFAC6B] via-[#E8BE88] to-[#DFAC6B] text-[#241C16] shadow-md shadow-amber-500/25' : 'text-white/85 hover:text-white hover:bg-white/10' }}"
                     >
-                        Beranda
+                        <span>🏠</span>
+                        <span>Beranda</span>
                     </a>
                     <a 
                         href="{{ route('produk.index', '*') }}" 
-                        class="px-5 py-2 rounded-full text-xs font-bold transition-all duration-300 {{ request()->routeIs('produk.*') ? 'bg-gradient-to-r from-[#DFAC6B] via-[#E8BA7E] to-[#DFAC6B] text-[#241C16] shadow-md shadow-amber-500/20' : 'text-white/85 hover:text-white hover:bg-white/10' }}"
+                        class="px-5 py-2 rounded-full text-xs font-bold transition-all duration-300 flex items-center gap-1.5 {{ request()->routeIs('produk.*') ? 'bg-gradient-to-r from-[#DFAC6B] via-[#E8BE88] to-[#DFAC6B] text-[#241C16] shadow-md shadow-amber-500/25' : 'text-white/85 hover:text-white hover:bg-white/10' }}"
                     >
-                        Katalog Produk
+                        <span>🍰</span>
+                        <span>Katalog Produk</span>
                     </a>
                     <a 
                         href="{{ route('about.index') }}" 
-                        class="px-5 py-2 rounded-full text-xs font-bold transition-all duration-300 {{ request()->routeIs('about.*') ? 'bg-gradient-to-r from-[#DFAC6B] via-[#E8BA7E] to-[#DFAC6B] text-[#241C16] shadow-md shadow-amber-500/20' : 'text-white/85 hover:text-white hover:bg-white/10' }}"
+                        class="px-5 py-2 rounded-full text-xs font-bold transition-all duration-300 flex items-center gap-1.5 {{ request()->routeIs('about.*') ? 'bg-gradient-to-r from-[#DFAC6B] via-[#E8BE88] to-[#DFAC6B] text-[#241C16] shadow-md shadow-amber-500/25' : 'text-white/85 hover:text-white hover:bg-white/10' }}"
                     >
-                        Tentang Kami
+                        <span>📖</span>
+                        <span>Tentang Kami</span>
                     </a>
                 </nav>
 
-                <!-- Desktop User & Action Buttons (Glass Theme) -->
+                <!-- Desktop User & Action Buttons (Refactored Glass & Shine Theme) -->
                 <div class="hidden md:flex items-center gap-3">
                     @auth
                         <!-- Admin Dashboard Button -->
                         @if (in_array(Auth::user()->role, ['admin', 'superadmin']))
                             <a 
                                 href="{{ route('dashboard') }}" 
-                                class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-extrabold text-[#241C16] bg-gradient-to-r from-[#DFAC6B] to-[#F1CF9B] hover:brightness-105 transition-all shadow-md shadow-amber-500/20 transform hover:-translate-y-0.5"
+                                class="btn-shine inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-extrabold text-[#241C16] bg-gradient-to-r from-[#DFAC6B] via-[#F2D19F] to-[#DFAC6B] hover:brightness-105 transition-all shadow-md shadow-amber-500/25 transform hover:scale-105 active:scale-95 border border-amber-300/40"
                             >
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
@@ -104,15 +115,15 @@
                         @endif
 
                         <!-- User Profile Frosted Glass Chip -->
-                        <div class="flex items-center gap-2 pl-2 pr-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-white shadow-inner">
-                            <div class="w-7 h-7 rounded-full bg-gradient-to-br from-[#DFAC6B] to-[#C29456] text-[#241C16] font-bold text-xs flex items-center justify-center uppercase shadow-inner">
+                        <div class="flex items-center gap-2.5 pl-2.5 pr-4 py-1.5 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 hover:border-amber-400/30 backdrop-blur-md text-white shadow-inner transition-colors">
+                            <div class="w-7 h-7 rounded-full bg-gradient-to-br from-[#DFAC6B] to-[#C29456] text-[#241C16] font-extrabold text-xs flex items-center justify-center uppercase shadow-inner">
                                 {{ substr(Auth::user()->name ?: Auth::user()->username, 0, 1) }}
                             </div>
                             <div class="flex flex-col text-left">
                                 <span class="text-xs font-bold leading-tight max-w-[110px] truncate text-white">
                                     {{ Auth::user()->username }}
                                 </span>
-                                <span class="text-[10px] text-[#DFAC6B] leading-none uppercase font-semibold">
+                                <span class="text-[10px] text-[#DFAC6B] leading-none uppercase font-extrabold">
                                     {{ Auth::user()->role }}
                                 </span>
                             </div>
@@ -124,7 +135,7 @@
                             <button 
                                 type="submit" 
                                 title="Keluar Akun" 
-                                class="p-2.5 rounded-full text-white/70 hover:text-rose-400 hover:bg-white/10 border border-transparent hover:border-white/10 transition-all duration-200 cursor-pointer"
+                                class="p-2.5 rounded-full text-white/70 hover:text-rose-400 bg-white/5 hover:bg-rose-500/15 border border-white/10 hover:border-rose-400/40 transition-all duration-300 transform hover:scale-105 active:scale-95 cursor-pointer shadow-sm"
                             >
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -132,13 +143,13 @@
                             </button>
                         </form>
                     @else
-                        <!-- Guest Login Button (Glowing Glass Pill) -->
+                        <!-- Guest Login Button (Refactored Glowing Glass Pill) -->
                         <a 
                             href="{{ route('login') }}" 
-                            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-extrabold text-[#241C16] bg-gradient-to-r from-[#DFAC6B] via-[#EBC690] to-[#DFAC6B] hover:shadow-amber-500/30 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95 border border-white/30"
+                            class="btn-shine inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full text-xs font-extrabold text-[#241C16] bg-gradient-to-r from-[#DFAC6B] via-[#EBC690] to-[#C9934E] hover:shadow-amber-500/40 hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 border border-white/40 cursor-pointer"
                         >
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
                             </svg>
                             <span>Masuk / Login</span>
                         </a>
@@ -151,7 +162,7 @@
                         type="button" 
                         id="mobileMenuBtn" 
                         aria-label="Buka Menu"
-                        class="p-2.5 rounded-xl text-white hover:text-[#DFAC6B] hover:bg-white/10 border border-white/10 focus:outline-none transition cursor-pointer"
+                        class="p-2.5 rounded-2xl text-white hover:text-[#DFAC6B] bg-white/5 hover:bg-white/10 border border-white/15 focus:outline-none transition-all cursor-pointer"
                     >
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" id="hamburgerIcon">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -168,33 +179,36 @@
         <div id="mobileMenu" class="hidden md:hidden glass-nav border-t border-white/10 px-4 pt-4 pb-6 space-y-2 transition-all duration-300">
             <a 
                 href="/" 
-                class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold {{ request()->is('/') ? 'text-[#DFAC6B] bg-white/10' : 'text-white/90 hover:text-[#DFAC6B] hover:bg-white/5' }}"
+                class="flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold {{ request()->is('/') ? 'text-[#241C16] bg-gradient-to-r from-[#DFAC6B] to-[#E8BE88] shadow-md' : 'text-white/90 hover:text-[#DFAC6B] hover:bg-white/5' }}"
             >
-                <span>🏠</span> Beranda
+                <span>🏠</span> 
+                <span>Beranda</span>
             </a>
             <a 
                 href="{{ route('produk.index', '*') }}" 
-                class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold {{ request()->routeIs('produk.*') ? 'text-[#DFAC6B] bg-white/10' : 'text-white/90 hover:text-[#DFAC6B] hover:bg-white/5' }}"
+                class="flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold {{ request()->routeIs('produk.*') ? 'text-[#241C16] bg-gradient-to-r from-[#DFAC6B] to-[#E8BE88] shadow-md' : 'text-white/90 hover:text-[#DFAC6B] hover:bg-white/5' }}"
             >
-                <span>🍰</span> Katalog Produk
+                <span>🍰</span> 
+                <span>Katalog Produk</span>
             </a>
             <a 
                 href="{{ route('about.index') }}" 
-                class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold {{ request()->routeIs('about.*') ? 'text-[#DFAC6B] bg-white/10' : 'text-white/90 hover:text-[#DFAC6B] hover:bg-white/5' }}"
+                class="flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold {{ request()->routeIs('about.*') ? 'text-[#241C16] bg-gradient-to-r from-[#DFAC6B] to-[#E8BE88] shadow-md' : 'text-white/90 hover:text-[#DFAC6B] hover:bg-white/5' }}"
             >
-                <span>📖</span> Tentang Kami
+                <span>📖</span> 
+                <span>Tentang Kami</span>
             </a>
 
             <div class="pt-4 border-t border-white/10 space-y-3">
                 @auth
-                    <div class="flex items-center justify-between px-4 py-2.5 bg-white/10 border border-white/15 rounded-xl text-white">
-                        <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-full bg-[#DFAC6B] text-[#241C16] font-bold text-xs flex items-center justify-center uppercase">
+                    <div class="flex items-center justify-between px-4 py-3 bg-white/10 border border-white/15 rounded-2xl text-white">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-full bg-gradient-to-br from-[#DFAC6B] to-[#C29456] text-[#241C16] font-bold text-xs flex items-center justify-center uppercase shadow-md">
                                 {{ substr(Auth::user()->name ?: Auth::user()->username, 0, 1) }}
                             </div>
                             <div class="text-left">
                                 <p class="text-xs font-bold leading-tight">{{ Auth::user()->username }}</p>
-                                <p class="text-[10px] text-[#DFAC6B] uppercase">{{ Auth::user()->role }}</p>
+                                <p class="text-[10px] text-[#DFAC6B] font-extrabold uppercase">{{ Auth::user()->role }}</p>
                             </div>
                         </div>
                         <form action="{{ route('logout') }}" method="POST" class="inline">
@@ -206,7 +220,7 @@
                     @if (in_array(Auth::user()->role, ['admin', 'superadmin']))
                         <a 
                             href="{{ route('dashboard') }}" 
-                            class="block text-center py-3 rounded-xl text-xs font-extrabold text-[#241C16] bg-[#DFAC6B] shadow-md"
+                            class="block text-center py-3 rounded-2xl text-xs font-extrabold text-[#241C16] bg-gradient-to-r from-[#DFAC6B] via-[#E8BE88] to-[#DFAC6B] shadow-lg shadow-amber-500/25 border border-white/30"
                         >
                             📊 Buka Dashboard Admin
                         </a>
@@ -214,7 +228,7 @@
                 @else
                     <a 
                         href="{{ route('login') }}" 
-                        class="block text-center py-3 rounded-xl text-xs font-extrabold text-[#241C16] bg-gradient-to-r from-[#DFAC6B] to-[#EBC690] shadow-md"
+                        class="btn-shine block text-center py-3 rounded-2xl text-xs font-extrabold text-[#241C16] bg-gradient-to-r from-[#DFAC6B] via-[#EBC690] to-[#C9934E] shadow-lg shadow-amber-500/25 border border-white/30"
                     >
                         Masuk / Login Akun
                     </a>
