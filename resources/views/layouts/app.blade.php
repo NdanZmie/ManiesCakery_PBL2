@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="Manies Cakery - Toko kue, brownies panggang, cookies, dan hampers homemade premium terbaik di Batam. Dibuat segar setiap hari dengan bahan alami pilihan.">
     <title>@yield('title', 'Manies Cakery - Toko Kue & Pastry Homemade')</title>
 
