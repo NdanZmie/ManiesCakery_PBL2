@@ -1,6 +1,6 @@
-# 🛠️ Panduan Instalasi & Menjalankan Sistem
+# 🛠️ Panduan Instalasi & Menjalankan Sistem (Hamdan Azmi Ver)
 
-Dokumen ini berisi panduan langkah-demi-langkah untuk meng-clone, menginstal dependensi, mengonfigurasi environment, dan menjalankan aplikasi web **Manies Cakery** di lingkungan lokal.
+Dokumen ini berisi panduan langkah-demi-langkah untuk meng-clone, menginstal dependensi, mengonfigurasi environment, dan menjalankan aplikasi web **Manies Cakery (Hamdan Azmi Ver)** di lingkungan lokal.
 
 ---
 

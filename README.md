@@ -7,13 +7,16 @@
 
 ---
 
-## 🍰 Project-Based Learning (PBL) — Kelompok 3
+# 🍰 Manies Cakery (Hamdan Azmi Ver)
+### 🚀 E-Commerce & Bakery CMS Platform — Modernized & Refactored Edition
 
-Platform Web CMS & E-Commerce Bakery Modern **"Manies Cakery"**
-
-> 🌟 **Catatan Edisi Pengembangan:**  
-> Repository ini adalah **Versi Refactor & Modernisasi oleh Hamdan Azmi** (*NIM: 3312411004*).  
+> 🌟 **Catatan Pengembangan Khusus:**  
+> Repository ini adalah **Manies Cakery (Hamdan Azmi Ver)** yang telah di-refactor dan dimodernisasi secara menyeluruh oleh **Hamdan Azmi** (*NIM: 3312411004*).  
 > 🔗 **Repository Asli Kelompok (Original Team Repo):** [https://github.com/deaasnuari/maniescakeryPBL2.git](https://github.com/deaasnuari/maniescakeryPBL2.git)
+
+---
+
+## 👥 Identitas Tim PBL Kelompok 3
 
 | NIM | Nama Lengkap | Peran / Kontribusi | Posisi |
 | :--- | :--- | :--- | :--- |
@@ -24,9 +27,7 @@ Platform Web CMS & E-Commerce Bakery Modern **"Manies Cakery"**
 
 ---
 
-# 🍰 Manies Cakery — E-Commerce & Bakery CMS Platform
-
-[![Refactored By](https://img.shields.io/badge/Refactored_By-Hamdan_Azmi-DFAC6B?style=for-the-badge&logo=github&logoColor=18110D)](https://github.com/NdanZmie)
+[![Edition](https://img.shields.io/badge/Edition-Hamdan_Azmi_Ver-DFAC6B?style=for-the-badge&logo=github&logoColor=18110D)](https://github.com/NdanZmie/ManiesCakery_PBL2)
 [![Original Repo](https://img.shields.io/badge/Original_Repo-deaasnuari%2FmaniescakeryPBL2-blue?style=for-the-badge&logo=git&logoColor=white)](https://github.com/deaasnuari/maniescakeryPBL2.git)
 [![Laravel](https://img.shields.io/badge/Laravel-11.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
 [![PHP](https://img.shields.io/badge/PHP-8.3-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
@@ -36,7 +37,7 @@ Platform Web CMS & E-Commerce Bakery Modern **"Manies Cakery"**
 [![MySQL](https://img.shields.io/badge/MySQL-8.x-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com)
 [![Tests](https://img.shields.io/badge/Tests-16%20Passed-success?style=for-the-badge&logo=checkmarx&logoColor=white)](https://github.com/NdanZmie/ManiesCakery_PBL2)
 
-**Manies Cakery** adalah platform web Content Management System (CMS) & E-Commerce modern yang dirancang khusus untuk toko kue dan pastry rumahan (UMKM) di Batam. Sistem ini menyediakan antarmuka toko publik bernuansa *modern dark cocoa & warm gold*, integrasi pemesanan instan via WhatsApp, serta panel administrasi lengkap untuk mengelola produk, kategori, banner, dan pengguna.
+**Manies Cakery (Hamdan Azmi Ver)** adalah platform web Content Management System (CMS) & E-Commerce modern yang dirancang khusus untuk toko kue dan pastry rumahan (UMKM) di Batam. Sistem ini menyediakan antarmuka toko publik bernuansa *modern dark cocoa & warm gold*, integrasi pemesanan instan via WhatsApp, serta panel administrasi lengkap untuk mengelola produk, kategori, banner, dan pengguna.
 
 ---
 

@@ -1,6 +1,6 @@
-# 🏗️ Arsitektur & Struktur Proyek
+# 🏗️ Arsitektur & Struktur Proyek (Hamdan Azmi Ver)
 
-Dokumen ini menjelaskan arsitektur perangkat lunak, tumpukan teknologi (tech stack), pola desain, dan struktur folder pada proyek **Manies Cakery**.
+Dokumen ini menjelaskan arsitektur perangkat lunak, tumpukan teknologi (tech stack), pola desain, dan struktur folder pada proyek **Manies Cakery (Hamdan Azmi Ver)**.
 
 ---
 

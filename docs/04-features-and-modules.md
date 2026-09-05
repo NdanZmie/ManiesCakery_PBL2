@@ -1,6 +1,6 @@
-# 🌟 Panduan Fitur & Modul Sistem
+# 🌟 Panduan Fitur & Modul Sistem (Hamdan Azmi Ver)
 
-Dokumen ini menguraikan seluruh fitur yang tersedia pada aplikasi **Manies Cakery**, baik untuk pengguna publik (toko) maupun pengelola toko (administrator).
+Dokumen ini menguraikan seluruh fitur yang tersedia pada aplikasi **Manies Cakery (Hamdan Azmi Ver)**, baik untuk pengguna publik (toko) maupun pengelola toko (administrator).
 
 ---
 

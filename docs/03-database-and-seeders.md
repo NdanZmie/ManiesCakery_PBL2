@@ -1,6 +1,6 @@
-# 🗄️ Skema Database & Mekanisme Seeder Aset
+# 🗄️ Skema Database & Mekanisme Seeder Aset (Hamdan Azmi Ver)
 
-Dokumen ini menjelaskan struktur tabel, kolom, relasi, serta mekanisme otomatis penyalinan aset gambar saat proses seeding dijalankan.
+Dokumen ini menjelaskan struktur tabel, kolom, relasi, serta mekanisme otomatis penyalinan aset gambar saat proses seeding dijalankan pada **Manies Cakery (Hamdan Azmi Ver)**.
 
 ---
 

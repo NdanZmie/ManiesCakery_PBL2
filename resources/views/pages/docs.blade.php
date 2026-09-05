@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Dokumentasi Sistem & Tim PBL - Manies Cakery')
+@section('title', 'Dokumentasi Sistem (Hamdan Azmi Ver) - Manies Cakery')
 @section('content')
 
 <!-- Header Hero Section -->
@@ -11,13 +11,13 @@
     <div class="max-w-6xl mx-auto text-center relative z-10 space-y-4">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs text-[#DFAC6B] font-bold backdrop-blur-md shadow-sm">
             <span>📚</span>
-            <span>Dokumentasi Resmi Sistem & PBL Kelompok 3</span>
+            <span>Dokumentasi Resmi Sistem — Hamdan Azmi Ver</span>
         </div>
         <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
-            Dokumentasi Lengkap <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#DFAC6B] via-[#F2D19F] to-[#DFAC6B]">Manies Cakery</span>
+            Dokumentasi <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#DFAC6B] via-[#F2D19F] to-[#DFAC6B]">Manies Cakery</span> <span class="text-xs sm:text-sm px-3 py-1 bg-amber-500/20 text-[#DFAC6B] border border-amber-500/30 rounded-full font-bold uppercase tracking-wider align-middle">Hamdan Azmi Ver</span>
         </h1>
         <p class="text-sm sm:text-base text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Panduan arsitektur sistem, instalasi, skema basis data, alur kerja fitur, pengujian otomatis, serta laporan proyek **Project-Based Learning (PBL)** Politeknik Negeri Batam.
+            Panduan lengkap arsitektur sistem, instalasi, skema basis data, alur kerja fitur, pengujian otomatis, serta laporan proyek **Project-Based Learning (PBL)** Politeknik Negeri Batam (Edisi Modernisasi & Refactor oleh **Hamdan Azmi**).
         </p>
 
         <!-- Quick Jump Links -->

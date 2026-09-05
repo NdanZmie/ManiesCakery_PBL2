@@ -1,6 +1,6 @@
-# 🛡️ Pengujian Otomatis & Standar Keamanan
+# 🛡️ Pengujian Otomatis & Standar Keamanan (Hamdan Azmi Ver)
 
-Dokumen ini menjelaskan strategi pengujian otomatis, cakupan skenario pengujian, dan implementasi keamanan pada aplikasi **Manies Cakery**.
+Dokumen ini menjelaskan strategi pengujian otomatis, cakupan skenario pengujian, dan implementasi keamanan pada aplikasi **Manies Cakery (Hamdan Azmi Ver)**.
 
 ---
 

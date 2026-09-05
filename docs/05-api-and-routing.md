@@ -1,6 +1,6 @@
-# 🛣️ Daftar Rute & Routing Endpoints
+# 🛣️ Daftar Rute & Routing Endpoints (Hamdan Azmi Ver)
 
-Dokumen ini memetakan seluruh rute URL, metode HTTP, middleware perlindungan, dan controller yang bertindak sebagai *handler* pada aplikasi **Manies Cakery**.
+Dokumen ini memetakan seluruh rute URL, metode HTTP, middleware perlindungan, dan controller yang bertindak sebagai *handler* pada aplikasi **Manies Cakery (Hamdan Azmi Ver)**.
 
 ---
 
