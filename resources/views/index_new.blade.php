@@ -391,7 +391,7 @@
             @endif
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6 justify-center">
             @forelse ($produkFavorit as $produk)    
                 <div class="relative group flex flex-col items-center text-center">
                     @if(Auth::check() && in_array(Auth::user()->role, ['admin', 'superadmin']))
@@ -407,7 +407,7 @@
                     @endif
 
                     <a href="{{ route('produk.detail', $produk->id) }}" class="flex flex-col items-center text-center w-full">
-                        <div class="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden shadow-lg border-4 border-amber-100 group-hover:border-[#DFAC6B] group-hover:scale-105 transition-all duration-300">
+                        <div class="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden shadow-lg border-4 border-amber-100 group-hover:border-[#DFAC6B] group-hover:scale-105 transition-all duration-300">
                             <img 
                                 src="{{ asset('storage/' . $produk->gambar) }}" 
                                 alt="{{ $produk->nama }}" 
@@ -418,7 +418,7 @@
                                 <span class="text-white text-xs font-bold bg-black/60 px-3 py-1 rounded-full">Pesan</span>
                             </div>
                         </div>
-                        <h3 class="mt-4 text-sm sm:text-base font-bold text-gray-900 group-hover:text-amber-800 transition-colors line-clamp-1">
+                        <h3 class="mt-4 text-xs sm:text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-800 transition-colors line-clamp-1">
                             {{ $produk->nama }}
                         </h3>
                         <p class="text-xs font-extrabold text-[#DFAC6B] mt-0.5">
@@ -435,7 +435,7 @@
                             onclick="openFavoriteModal()"
                             class="text-xs font-bold text-amber-700 hover:underline cursor-pointer"
                         >
-                            + Klik di sini untuk memilih produk favorit sekarang
+                            + Klik di sini untuk memilih produk favorit sekarang (Maks. 5)
                         </button>
                     @endif
                 </div>
@@ -461,12 +461,12 @@
                 <div class="p-5 sm:p-6 border-b border-gray-100 bg-[#FAF7F2] flex items-center justify-between">
                     <div>
                         <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-wider mb-1">
-                            <span>⭐</span> Khusus Admin & Super Admin
+                            <span>⭐</span> Khusus Admin & Super Admin (Maksimal 5 Produk)
                         </div>
                         <h3 class="text-xl font-bold text-[#332B25] font-serif">
                             Pilih Menu Favorit untuk Tampil di Beranda
                         </h3>
-                        <p class="text-xs text-gray-500 mt-0.5">Centang produk yang ingin Anda tampilkan pada etalase Menu Favourite di halaman beranda.</p>
+                        <p class="text-xs text-gray-500 mt-0.5">Centang <strong>maksimal 5 produk</strong> yang ingin Anda tampilkan pada etalase Menu Favourite di halaman beranda.</p>
                     </div>
                     <button 
                         type="button" 
@@ -474,6 +474,17 @@
                         class="text-gray-400 hover:text-gray-700 p-2 rounded-xl hover:bg-gray-200/60 transition-colors cursor-pointer"
                     >
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+
+                <!-- Max 5 Limit Warning Banner (Appears if limit reached) -->
+                <div id="favLimitAlert" class="hidden mx-4 sm:mx-6 mt-3 p-3.5 rounded-2xl bg-amber-500 text-white text-xs font-bold flex items-center justify-between shadow-lg shadow-amber-500/30">
+                    <span class="flex items-center gap-1.5">
+                        <span class="text-sm">⚠️</span>
+                        <span>Batas Tercapai! Maksimal 5 produk yang dapat dipilih. Hapus centang produk lain terlebih dahulu jika ingin mengganti.</span>
+                    </span>
+                    <button type="button" onclick="hideLimitAlert()" class="text-white hover:text-amber-950 font-bold px-2 py-0.5 cursor-pointer">
+                        ✕
                     </button>
                 </div>
 
@@ -557,7 +568,7 @@
                 <!-- Sticky Bottom Action Footer -->
                 <div class="p-4 sm:px-6 bg-white border-t border-gray-100 flex items-center justify-between shadow-inner">
                     <div class="text-xs sm:text-sm font-bold text-gray-700">
-                        <span id="selectedCountText" class="text-amber-700 font-extrabold">{{ count($produkFavorit) }}</span> produk dipilih sebagai Menu Favorit
+                        <span id="selectedCountText" class="text-amber-700 font-extrabold">{{ count($produkFavorit) }}</span> / 5 produk dipilih sebagai Menu Favorit
                     </div>
                     <div class="flex items-center gap-2">
                         <button 
@@ -822,10 +833,35 @@
         }
     }
 
+    const MAX_FAVORITES = 5;
+
+    function showLimitAlert() {
+        const alertElem = document.getElementById('favLimitAlert');
+        if (alertElem) {
+            alertElem.classList.remove('hidden');
+            setTimeout(() => {
+                alertElem.classList.add('hidden');
+            }, 4000);
+        }
+    }
+
+    function hideLimitAlert() {
+        const alertElem = document.getElementById('favLimitAlert');
+        if (alertElem) alertElem.classList.add('hidden');
+    }
+
     function toggleFavCheckbox(productId) {
         const checkbox = document.getElementById('fav_check_' + productId);
         const card = document.querySelector(`.fav-item-card[data-id="${productId}"]`);
         if (!checkbox || !card) return;
+
+        const currentChecked = document.querySelectorAll('.fav-checkbox:checked').length;
+        
+        // Enforce maximum 5 items: If unchecked and user tries to check when already at 5
+        if (!checkbox.checked && currentChecked >= MAX_FAVORITES) {
+            showLimitAlert();
+            return;
+        }
 
         checkbox.checked = !checkbox.checked;
         if (checkbox.checked) {

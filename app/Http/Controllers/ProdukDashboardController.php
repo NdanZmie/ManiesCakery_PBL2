@@ -148,6 +148,13 @@ class ProdukDashboardController extends Controller
     {
         $selectedIds = $request->input('selected_ids', []);
         
+        if (count($selectedIds) > 5) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Maksimal 5 produk yang dapat dipilih untuk ditampilkan di Menu Favorit Beranda.'
+            ], 422);
+        }
+
         // Reset all to 0, then update selected to 1
         Produk::query()->update(['favourit' => 0]);
         if (!empty($selectedIds)) {
@@ -156,7 +163,7 @@ class ProdukDashboardController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'Daftar Menu Favorit Beranda berhasil diperbarui!',
+            'message' => 'Daftar Menu Favorit Beranda berhasil diperbarui (maksimal 5 produk)!',
             'count' => count($selectedIds)
         ]);
     }

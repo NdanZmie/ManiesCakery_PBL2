@@ -28,9 +28,9 @@ Route::get('/', function () {
         $sliders->push(null);
     }
 
-    $produkFavorit = Produk::where('favourit', 1)->latest()->get();
+    $produkFavorit = Produk::where('favourit', 1)->latest()->take(5)->get();
     if ($produkFavorit->isEmpty()) {
-        $produkFavorit = Produk::where('status', 1)->latest()->take(4)->get();
+        $produkFavorit = Produk::where('status', 1)->latest()->take(5)->get();
     }
 
     $allProducts = Produk::orderBy('nama')->get();
