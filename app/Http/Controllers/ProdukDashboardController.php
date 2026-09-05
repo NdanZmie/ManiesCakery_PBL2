@@ -10,13 +10,27 @@ use Illuminate\Support\Facades\Auth;
 
 class ProdukDashboardController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Produk::latest()->take(25)->get();
+        $query = Produk::query();
+        
+        $filter = $request->query('filter');
+        if ($filter === 'favorite') {
+            $query->where('favourit', 1);
+        }
+
+        $category = $request->query('category');
+        if ($category) {
+            $query->where('kategori', $category);
+        }
+
+        $products = $query->latest()->get();
         $categories = Kategori::all();
         $editStatus = false;
+        $favoriteCount = Produk::where('favourit', 1)->count();
+        $totalCount = Produk::count();
 
-        return view('pages.dashboard.products', compact('products', 'categories', 'editStatus'));
+        return view('pages.dashboard.products', compact('products', 'categories', 'editStatus', 'favoriteCount', 'totalCount', 'filter', 'category'));
     }
 
     public function search(Request $request)
@@ -31,8 +45,10 @@ class ProdukDashboardController extends Controller
 
         $categories = Kategori::all();
         $editStatus = false;
+        $favoriteCount = Produk::where('favourit', 1)->count();
+        $totalCount = Produk::count();
 
-        return view('pages.dashboard.products', compact('products', 'categories', 'editStatus', 'keyword'));
+        return view('pages.dashboard.products', compact('products', 'categories', 'editStatus', 'keyword', 'favoriteCount', 'totalCount'));
     }
 
     public function store(Request $request)
@@ -60,6 +76,7 @@ class ProdukDashboardController extends Controller
             'gambar' => $gambarName,
             'status' => true,
             'link_instagram' => $request->link_instagram,
+            'favourit' => $request->has('favourit') ? 1 : 0,
         ]);
 
         return redirect()->back()->with('success', 'Produk berhasil ditambahkan!');
@@ -70,8 +87,10 @@ class ProdukDashboardController extends Controller
         $categories = Kategori::all();
         $products = Produk::all();
         $editStatus = true;
+        $favoriteCount = Produk::where('favourit', 1)->count();
+        $totalCount = Produk::count();
 
-        return view('pages.dashboard.products', compact('product', 'categories', 'products', 'editStatus'));
+        return view('pages.dashboard.products', compact('product', 'categories', 'products', 'editStatus', 'favoriteCount', 'totalCount'));
     }
 
     public function update(Request $request, Produk $product)
@@ -90,6 +109,7 @@ class ProdukDashboardController extends Controller
             'harga' => $request->harga,
             'kategori' => $request->kategori,
             'link_instagram' => $request->link_instagram,
+            'favourit' => $request->has('favourit') ? 1 : 0,
         ];
 
         if ($request->hasFile('gambar')) {
@@ -105,6 +125,23 @@ class ProdukDashboardController extends Controller
         $product->update($data);
 
         return redirect()->route('dashboard.product.index')->with('success', 'Produk berhasil diupdate.');
+    }
+
+    public function toggleFavorite(Produk $product)
+    {
+        $product->favourit = $product->favourit ? 0 : 1;
+        $product->save();
+
+        if (request()->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'isFavourite' => (bool)$product->favourit,
+                'message' => $product->favourit ? "Produk '{$product->nama}' dijadikan menu favorit!" : "Produk '{$product->nama}' dihapus dari menu favorit."
+            ]);
+        }
+
+        $statusText = $product->favourit ? 'dijadikan sebagai menu favorit (tampil di beranda)' : 'dihapus dari menu favorit';
+        return back()->with('success', "Produk '{$product->nama}' berhasil {$statusText}.");
     }
 
     public function destroy(Produk $product)

@@ -28,9 +28,9 @@ Route::get('/', function () {
         $sliders->push(null);
     }
 
-    $produkFavorit = Produk::where('favourit', 1)->take(4)->get();
+    $produkFavorit = Produk::where('favourit', 1)->latest()->take(8)->get();
     if ($produkFavorit->isEmpty()) {
-        $produkFavorit = Produk::where('status', 1)->take(4)->get();
+        $produkFavorit = Produk::where('status', 1)->latest()->take(4)->get();
     }
 
     return view('index_new', [
@@ -108,6 +108,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('/products/search', [ProdukDashboardController::class, 'search'])->name('product.search');
         Route::get('/products/{product}/edit', [ProdukDashboardController::class, 'edit'])->name('product.edit');
         Route::put('/products/{product}', [ProdukDashboardController::class, 'update'])->name('product.update');
+        Route::post('/products/{product}/toggle-favorite', [ProdukDashboardController::class, 'toggleFavorite'])->name('product.toggle-favorite');
         Route::delete('/products/{product}', [ProdukDashboardController::class, 'destroy'])->name('product.destroy');
 
         // Categories Management

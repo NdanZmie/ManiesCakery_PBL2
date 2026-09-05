@@ -1,17 +1,27 @@
-<button wire:click="toggleFavourite" class="focus:outline-none">
-    @if ($isFavourite)
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 
-            4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 
-            14.76 3 16.5 3 19.58 3 22 5.42 
-            22 8.5c0 3.78-3.4 6.86-8.55 
-            11.54L12 21.35z"/>
-        </svg>
-    @else
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-400 hover:text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-        </svg>
-    @endif
-</button>
-
+<div class="inline-flex items-center">
+    <button 
+        wire:click="toggleFavourite" 
+        wire:loading.attr="disabled"
+        type="button"
+        title="{{ $isFavourite ? 'Klik untuk menghapus dari Menu Favorit Beranda' : 'Klik untuk menampilkan sebagai Menu Favorit di Beranda' }}"
+        class="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 active:scale-95 shadow-sm {{ $isFavourite ? 'bg-amber-100 text-amber-900 border border-amber-300 hover:bg-amber-200 hover:shadow-amber-500/20' : 'bg-gray-100 text-gray-500 border border-gray-200 hover:bg-amber-50 hover:text-amber-800 hover:border-amber-200' }}"
+    >
+        <span wire:loading.remove>
+            @if ($isFavourite)
+                <span class="text-amber-500 text-sm">⭐</span>
+                <span>Favorit (Beranda)</span>
+            @else
+                <span class="text-gray-400 text-sm">☆</span>
+                <span>Jadikan Favorit</span>
+            @endif
+        </span>
+        
+        <span wire:loading class="inline-flex items-center gap-1 text-amber-800">
+            <svg class="animate-spin h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <span class="text-[11px]">Memproses...</span>
+        </span>
+    </button>
+</div>

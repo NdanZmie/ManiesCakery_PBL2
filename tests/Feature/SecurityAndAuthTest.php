@@ -159,5 +159,40 @@ class SecurityAndAuthTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Manies Cakery');
     }
+
+    /**
+     * Admin and super admin can toggle favorite status for products.
+     */
+    public function test_admin_can_toggle_product_favorite_status(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+        $product = \App\Models\Produk::first() ?? \App\Models\Produk::create([
+            'nama' => 'Test Favorite Cake',
+            'deskripsi' => 'Test Desc',
+            'harga' => 50000,
+            'kategori' => 'Cake',
+            'gambar' => null,
+            'status' => true,
+            'favourit' => 0,
+        ]);
+
+        $initialStatus = $product->favourit;
+
+        // Toggle via POST route
+        $response = $this->actingAs($admin)->post('/dashboard/products/' . $product->id . '/toggle-favorite');
+        $response->assertStatus(302);
+
+        $product->refresh();
+        $this->assertEquals($initialStatus ? 0 : 1, $product->favourit);
+
+        // Toggle via Livewire component
+        \Livewire\Livewire::actingAs($admin)
+            ->test(\App\Livewire\FavouriteToggle::class, ['productId' => $product->id])
+            ->call('toggleFavourite');
+
+        $product->refresh();
+        $this->assertEquals($initialStatus, $product->favourit);
+    }
 }
+
 
