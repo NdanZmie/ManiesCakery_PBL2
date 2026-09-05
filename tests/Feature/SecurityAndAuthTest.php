@@ -3,11 +3,13 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class SecurityAndAuthTest extends TestCase
 {
+    use DatabaseTransactions;
+
     /**
      * Unauthenticated users must be redirected to login when accessing admin dashboard.
      */
