@@ -454,7 +454,7 @@
         <!-- =======================================================
              ADMIN MODAL: PILIH MENU FAVORIT BERANDA SECARA LANGSUNG
              ======================================================= -->
-        <div id="favoritePickerModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4 sm:p-6 transition-all duration-300">
+        <div id="favoritePickerModal" wire:ignore class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4 sm:p-6 transition-all duration-300">
             <div class="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl border border-amber-200 overflow-hidden flex flex-col max-h-[90vh]">
                 
                 <!-- Modal Header -->
@@ -524,11 +524,12 @@
                                 $isFav = (bool)$p->favourit;
                             @endphp
                             <div 
-                                class="fav-item-card relative flex items-center gap-3 p-3 rounded-2xl border transition-all duration-200 cursor-pointer select-none {{ $isFav ? 'bg-amber-50/90 border-amber-400 ring-2 ring-amber-400/40 shadow-sm' : 'bg-white border-gray-200 hover:border-amber-300' }}"
+                                id="fav_card_{{ $p->id }}"
+                                class="fav-item-card relative flex items-center gap-3 p-3 rounded-2xl border transition-all duration-200 cursor-pointer select-none {{ $isFav ? 'bg-amber-50 border-amber-400 ring-2 ring-amber-400/40 shadow-sm' : 'bg-white border-gray-200 hover:border-amber-300' }}"
                                 data-id="{{ $p->id }}"
                                 data-name="{{ strtolower($p->nama) }}"
                                 data-cat="{{ $p->kategori }}"
-                                onclick="toggleFavCheckbox({{ $p->id }})"
+                                onclick="toggleFavoriteProduct({{ $p->id }})"
                             >
                                 <img 
                                     src="{{ asset('storage/' . $p->gambar) }}" 
@@ -553,7 +554,8 @@
                                         id="fav_check_{{ $p->id }}"
                                         value="{{ $p->id }}" 
                                         {{ $isFav ? 'checked' : '' }}
-                                        class="fav-checkbox w-5 h-5 text-amber-600 border-gray-300 rounded focus:ring-amber-500 cursor-pointer pointer-events-none"
+                                        onclick="event.stopPropagation(); toggleFavoriteProduct({{ $p->id }})"
+                                        class="fav-checkbox w-5 h-5 text-amber-600 border-gray-300 rounded focus:ring-amber-500 cursor-pointer"
                                     >
                                 </div>
                             </div>
@@ -815,13 +817,42 @@
     // ADMIN FAVORITE MANAGEMENT MODAL SCRIPT
     // ==========================================
     let currentCategoryFilter = '';
+    const MAX_FAVORITES = 5;
+
+    // Single source of truth for favorite selection
+    let selectedFavoriteIds = new Set(@json($produkFavorit->pluck('id')->map(fn($id) => (int)$id)));
+
+    function updateFavoriteUI() {
+        const countText = document.getElementById('selectedCountText');
+        if (countText) {
+            countText.innerText = selectedFavoriteIds.size;
+        }
+
+        document.querySelectorAll('.fav-item-card').forEach(card => {
+            const id = parseInt(card.getAttribute('data-id'));
+            const isSelected = selectedFavoriteIds.has(id);
+            const cb = document.getElementById('fav_check_' + id);
+
+            if (cb) {
+                cb.checked = isSelected;
+            }
+
+            if (isSelected) {
+                card.classList.add('bg-amber-50', 'border-amber-400', 'ring-2', 'ring-amber-400/40', 'shadow-sm');
+                card.classList.remove('bg-white', 'border-gray-200');
+            } else {
+                card.classList.remove('bg-amber-50', 'border-amber-400', 'ring-2', 'ring-amber-400/40', 'shadow-sm');
+                card.classList.add('bg-white', 'border-gray-200');
+            }
+        });
+    }
 
     function openFavoriteModal() {
         const modal = document.getElementById('favoritePickerModal');
         if (modal) {
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
-            updateSelectedCount();
+            updateFavoriteUI();
         }
     }
 
@@ -832,8 +863,6 @@
             document.body.style.overflow = '';
         }
     }
-
-    const MAX_FAVORITES = 5;
 
     function showLimitAlert() {
         const alertElem = document.getElementById('favLimitAlert');
@@ -850,37 +879,21 @@
         if (alertElem) alertElem.classList.add('hidden');
     }
 
-    function toggleFavCheckbox(productId) {
-        const checkbox = document.getElementById('fav_check_' + productId);
-        const card = document.querySelector(`.fav-item-card[data-id="${productId}"]`);
-        if (!checkbox || !card) return;
+    function toggleFavoriteProduct(productId) {
+        productId = parseInt(productId);
 
-        const currentChecked = document.querySelectorAll('.fav-checkbox:checked').length;
-        
-        // Enforce maximum 5 items: If unchecked and user tries to check when already at 5
-        if (!checkbox.checked && currentChecked >= MAX_FAVORITES) {
-            showLimitAlert();
-            return;
-        }
-
-        checkbox.checked = !checkbox.checked;
-        if (checkbox.checked) {
-            card.classList.add('bg-amber-50/90', 'border-amber-400', 'ring-2', 'ring-amber-400/40', 'shadow-sm');
-            card.classList.remove('bg-white', 'border-gray-200');
+        if (selectedFavoriteIds.has(productId)) {
+            selectedFavoriteIds.delete(productId);
+            hideLimitAlert();
         } else {
-            card.classList.remove('bg-amber-50/90', 'border-amber-400', 'ring-2', 'ring-amber-400/40', 'shadow-sm');
-            card.classList.add('bg-white', 'border-gray-200');
+            if (selectedFavoriteIds.size >= MAX_FAVORITES) {
+                showLimitAlert();
+                return;
+            }
+            selectedFavoriteIds.add(productId);
         }
 
-        updateSelectedCount();
-    }
-
-    function updateSelectedCount() {
-        const checkedBoxes = document.querySelectorAll('.fav-checkbox:checked');
-        const countText = document.getElementById('selectedCountText');
-        if (countText) {
-            countText.innerText = checkedBoxes.length;
-        }
+        updateFavoriteUI();
     }
 
     function setCategoryFilter(categoryName) {
@@ -931,8 +944,7 @@
 
     async function submitFavoriteSync() {
         const btn = document.getElementById('btnSaveFavorites');
-        const checkedBoxes = document.querySelectorAll('.fav-checkbox:checked');
-        const selectedIds = Array.from(checkedBoxes).map(cb => parseInt(cb.value));
+        const selectedIds = Array.from(selectedFavoriteIds);
 
         if (btn) {
             btn.disabled = true;
