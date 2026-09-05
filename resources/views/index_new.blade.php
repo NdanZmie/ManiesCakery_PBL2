@@ -368,37 +368,77 @@
     </section>
 
     <!-- Section 3: Favorite Menu Showcase -->
-    <section class="py-12 px-6 sm:px-10 bg-white rounded-3xl shadow-sm border border-amber-100 my-8">
+    <section class="py-12 px-6 sm:px-10 bg-white rounded-3xl shadow-sm border border-amber-100 my-8 relative">
         <div class="text-center max-w-xl mx-auto mb-10">
             <h2 class="text-3xl md:text-4xl font-bold text-[#332B25] font-serif">
                 Menu <span class="font-norican text-4xl md:text-5xl text-[#DFAC6B]">Favourite</span>
             </h2>
             <p class="text-xs md:text-sm text-gray-500 mt-1">Produk terlaris yang paling sering dipesan oleh pelanggan kami.</p>
+
+            @if(Auth::check() && in_array(Auth::user()->role, ['admin', 'superadmin']))
+                <!-- Admin & Super Admin Direct Control Button -->
+                <div class="mt-4 flex items-center justify-center gap-3">
+                    <button 
+                        type="button" 
+                        onclick="openFavoriteModal()"
+                        class="cursor-pointer inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 text-white font-extrabold text-xs shadow-lg shadow-amber-600/30 hover:shadow-amber-600/50 hover:scale-105 active:scale-95 transition-all duration-300 border border-amber-400/40"
+                    >
+                        <span class="text-sm">⭐</span>
+                        <span>Kelola Menu Favorit Beranda ({{ count($produkFavorit) }} Aktif)</span>
+                        <svg class="w-3.5 h-3.5 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            @endif
         </div>
 
         <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6">
             @forelse ($produkFavorit as $produk)    
-                <a href="{{ route('produk.detail', $produk->id) }}" class="group flex flex-col items-center text-center">
-                    <div class="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden shadow-lg border-4 border-amber-100 group-hover:border-[#DFAC6B] group-hover:scale-105 transition-all duration-300">
-                        <img 
-                            src="{{ asset('storage/' . $produk->gambar) }}" 
-                            alt="{{ $produk->nama }}" 
-                            class="w-full h-full object-cover brightness-95 group-hover:scale-110 transition-transform duration-500"
-                            onerror="this.src='{{ asset('assets/banner.png') }}'"
+                <div class="relative group flex flex-col items-center text-center">
+                    @if(Auth::check() && in_array(Auth::user()->role, ['admin', 'superadmin']))
+                        <!-- Quick Remove button for Admin on Homepage -->
+                        <button 
+                            type="button"
+                            onclick="quickRemoveFavorite(event, {{ $produk->id }}, '{{ addslashes($produk->nama) }}')"
+                            title="Hapus dari Menu Favorit Beranda"
+                            class="absolute top-0 right-2 z-20 w-7 h-7 bg-rose-600 hover:bg-rose-700 text-white rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110 active:scale-90 text-xs font-bold cursor-pointer"
                         >
-                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <span class="text-white text-xs font-bold bg-black/60 px-3 py-1 rounded-full">Pesan</span>
+                            ✕
+                        </button>
+                    @endif
+
+                    <a href="{{ route('produk.detail', $produk->id) }}" class="flex flex-col items-center text-center w-full">
+                        <div class="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden shadow-lg border-4 border-amber-100 group-hover:border-[#DFAC6B] group-hover:scale-105 transition-all duration-300">
+                            <img 
+                                src="{{ asset('storage/' . $produk->gambar) }}" 
+                                alt="{{ $produk->nama }}" 
+                                class="w-full h-full object-cover brightness-95 group-hover:scale-110 transition-transform duration-500"
+                                onerror="this.src='{{ asset('assets/banner.png') }}'"
+                            >
+                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="text-white text-xs font-bold bg-black/60 px-3 py-1 rounded-full">Pesan</span>
+                            </div>
                         </div>
-                    </div>
-                    <h3 class="mt-4 text-sm sm:text-base font-bold text-gray-900 group-hover:text-amber-800 transition-colors line-clamp-1">
-                        {{ $produk->nama }}
-                    </h3>
-                    <p class="text-xs font-extrabold text-[#DFAC6B] mt-0.5">
-                        Rp {{ number_format($produk->harga, 0, ',', '.') }}
-                    </p>
-                </a>
+                        <h3 class="mt-4 text-sm sm:text-base font-bold text-gray-900 group-hover:text-amber-800 transition-colors line-clamp-1">
+                            {{ $produk->nama }}
+                        </h3>
+                        <p class="text-xs font-extrabold text-[#DFAC6B] mt-0.5">
+                            Rp {{ number_format($produk->harga, 0, ',', '.') }}
+                        </p>
+                    </a>
+                </div>
             @empty
-                <p class="text-center text-gray-500 w-full py-8 col-span-full">Belum ada produk favorit yang ditampilkan.</p>
+                <div class="text-center text-gray-500 w-full py-8 col-span-full">
+                    <p class="mb-2">Belum ada produk favorit yang ditampilkan.</p>
+                    @if(Auth::check() && in_array(Auth::user()->role, ['admin', 'superadmin']))
+                        <button 
+                            type="button" 
+                            onclick="openFavoriteModal()"
+                            class="text-xs font-bold text-amber-700 hover:underline cursor-pointer"
+                        >
+                            + Klik di sini untuk memilih produk favorit sekarang
+                        </button>
+                    @endif
+                </div>
             @endforelse
         </div>
 
@@ -409,6 +449,139 @@
             </a>
         </div>
     </section>
+
+    @if(Auth::check() && in_array(Auth::user()->role, ['admin', 'superadmin']))
+        <!-- =======================================================
+             ADMIN MODAL: PILIH MENU FAVORIT BERANDA SECARA LANGSUNG
+             ======================================================= -->
+        <div id="favoritePickerModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4 sm:p-6 transition-all duration-300">
+            <div class="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl border border-amber-200 overflow-hidden flex flex-col max-h-[90vh]">
+                
+                <!-- Modal Header -->
+                <div class="p-5 sm:p-6 border-b border-gray-100 bg-[#FAF7F2] flex items-center justify-between">
+                    <div>
+                        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-wider mb-1">
+                            <span>⭐</span> Khusus Admin & Super Admin
+                        </div>
+                        <h3 class="text-xl font-bold text-[#332B25] font-serif">
+                            Pilih Menu Favorit untuk Tampil di Beranda
+                        </h3>
+                        <p class="text-xs text-gray-500 mt-0.5">Centang produk yang ingin Anda tampilkan pada etalase Menu Favourite di halaman beranda.</p>
+                    </div>
+                    <button 
+                        type="button" 
+                        onclick="closeFavoriteModal()"
+                        class="text-gray-400 hover:text-gray-700 p-2 rounded-xl hover:bg-gray-200/60 transition-colors cursor-pointer"
+                    >
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+
+                <!-- Search and Category Filters -->
+                <div class="p-4 sm:px-6 bg-white border-b border-gray-100 flex flex-col sm:flex-row items-center gap-3">
+                    <div class="relative flex-1 w-full">
+                        <input 
+                            type="text" 
+                            id="favModalSearch" 
+                            onkeyup="filterModalProducts()"
+                            placeholder="Cari produk berdasarkan nama..."
+                            class="w-full py-2.5 pl-10 pr-4 text-xs sm:text-sm bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:bg-white focus:outline-none"
+                        >
+                        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        </div>
+                    </div>
+
+                    <!-- Category filter pills -->
+                    <div class="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0 scrollbar-none">
+                        <button type="button" onclick="setCategoryFilter('')" class="cat-pill active px-3 py-1.5 rounded-lg text-xs font-bold bg-[#332B25] text-white whitespace-nowrap cursor-pointer transition-colors" data-cat="">
+                            Semua
+                        </button>
+                        @foreach($categories as $cat)
+                            <button type="button" onclick="setCategoryFilter('{{ $cat->nama }}')" class="cat-pill px-3 py-1.5 rounded-lg text-xs font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 whitespace-nowrap cursor-pointer transition-colors" data-cat="{{ $cat->nama }}">
+                                {{ $cat->nama }}
+                            </button>
+                        @endforeach
+                    </div>
+                </div>
+
+                <!-- Product Selection Grid (Scrollable) -->
+                <div class="overflow-y-auto p-4 sm:p-6 flex-1 bg-[#FAF7F2]/50">
+                    <div id="favProductsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5">
+                        @foreach($allProducts as $p)
+                            @php
+                                $isFav = (bool)$p->favourit;
+                            @endphp
+                            <div 
+                                class="fav-item-card relative flex items-center gap-3 p-3 rounded-2xl border transition-all duration-200 cursor-pointer select-none {{ $isFav ? 'bg-amber-50/90 border-amber-400 ring-2 ring-amber-400/40 shadow-sm' : 'bg-white border-gray-200 hover:border-amber-300' }}"
+                                data-id="{{ $p->id }}"
+                                data-name="{{ strtolower($p->nama) }}"
+                                data-cat="{{ $p->kategori }}"
+                                onclick="toggleFavCheckbox({{ $p->id }})"
+                            >
+                                <img 
+                                    src="{{ asset('storage/' . $p->gambar) }}" 
+                                    alt="{{ $p->nama }}" 
+                                    class="w-14 h-14 object-cover rounded-xl border border-gray-200 shadow-sm flex-shrink-0"
+                                    onerror="this.src='{{ asset('assets/banner.png') }}'"
+                                >
+                                <div class="flex-1 min-w-0 pr-6">
+                                    <span class="inline-block text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 mb-0.5">
+                                        {{ $p->kategori }}
+                                    </span>
+                                    <h4 class="text-xs sm:text-sm font-bold text-gray-900 truncate">
+                                        {{ $p->nama }}
+                                    </h4>
+                                    <p class="text-xs font-extrabold text-[#DFAC6B] mt-0.5">
+                                        Rp {{ number_format($p->harga, 0, ',', '.') }}
+                                    </p>
+                                </div>
+                                <div class="absolute right-3.5 top-1/2 -translate-y-1/2">
+                                    <input 
+                                        type="checkbox" 
+                                        id="fav_check_{{ $p->id }}"
+                                        value="{{ $p->id }}" 
+                                        {{ $isFav ? 'checked' : '' }}
+                                        class="fav-checkbox w-5 h-5 text-amber-600 border-gray-300 rounded focus:ring-amber-500 cursor-pointer pointer-events-none"
+                                    >
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <div id="noFavProductsFound" class="hidden py-12 text-center text-gray-400 text-sm">
+                        Tidak ada produk yang cocok dengan pencarian.
+                    </div>
+                </div>
+
+                <!-- Sticky Bottom Action Footer -->
+                <div class="p-4 sm:px-6 bg-white border-t border-gray-100 flex items-center justify-between shadow-inner">
+                    <div class="text-xs sm:text-sm font-bold text-gray-700">
+                        <span id="selectedCountText" class="text-amber-700 font-extrabold">{{ count($produkFavorit) }}</span> produk dipilih sebagai Menu Favorit
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button 
+                            type="button" 
+                            onclick="closeFavoriteModal()"
+                            class="px-4 py-2.5 rounded-xl text-xs font-bold text-gray-600 bg-gray-100 hover:bg-gray-200 transition-colors cursor-pointer"
+                        >
+                            Batal
+                        </button>
+                        <button 
+                            type="button" 
+                            id="btnSaveFavorites"
+                            onclick="submitFavoriteSync()"
+                            class="px-5 py-2.5 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 shadow-md shadow-amber-600/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 cursor-pointer"
+                        >
+                            <span>✓</span>
+                            <span>Simpan & Terapkan ke Beranda</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    @endif
 
 @endsection
 
@@ -625,6 +798,178 @@
             if (touchStartX - touchEndX > 50) nextSlide();
             if (touchEndX - touchStartX > 50) prevSlide();
         }, { passive: true });
+    }
+
+    // ==========================================
+    // ADMIN FAVORITE MANAGEMENT MODAL SCRIPT
+    // ==========================================
+    let currentCategoryFilter = '';
+
+    function openFavoriteModal() {
+        const modal = document.getElementById('favoritePickerModal');
+        if (modal) {
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            updateSelectedCount();
+        }
+    }
+
+    function closeFavoriteModal() {
+        const modal = document.getElementById('favoritePickerModal');
+        if (modal) {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    }
+
+    function toggleFavCheckbox(productId) {
+        const checkbox = document.getElementById('fav_check_' + productId);
+        const card = document.querySelector(`.fav-item-card[data-id="${productId}"]`);
+        if (!checkbox || !card) return;
+
+        checkbox.checked = !checkbox.checked;
+        if (checkbox.checked) {
+            card.classList.add('bg-amber-50/90', 'border-amber-400', 'ring-2', 'ring-amber-400/40', 'shadow-sm');
+            card.classList.remove('bg-white', 'border-gray-200');
+        } else {
+            card.classList.remove('bg-amber-50/90', 'border-amber-400', 'ring-2', 'ring-amber-400/40', 'shadow-sm');
+            card.classList.add('bg-white', 'border-gray-200');
+        }
+
+        updateSelectedCount();
+    }
+
+    function updateSelectedCount() {
+        const checkedBoxes = document.querySelectorAll('.fav-checkbox:checked');
+        const countText = document.getElementById('selectedCountText');
+        if (countText) {
+            countText.innerText = checkedBoxes.length;
+        }
+    }
+
+    function setCategoryFilter(categoryName) {
+        currentCategoryFilter = categoryName;
+
+        document.querySelectorAll('.cat-pill').forEach(pill => {
+            if (pill.getAttribute('data-cat') === categoryName) {
+                pill.classList.add('bg-[#332B25]', 'text-white', 'font-bold');
+                pill.classList.remove('bg-gray-100', 'text-gray-700');
+            } else {
+                pill.classList.remove('bg-[#332B25]', 'text-white', 'font-bold');
+                pill.classList.add('bg-gray-100', 'text-gray-700');
+            }
+        });
+
+        filterModalProducts();
+    }
+
+    function filterModalProducts() {
+        const searchVal = (document.getElementById('favModalSearch')?.value || '').toLowerCase().trim();
+        const cards = document.querySelectorAll('.fav-item-card');
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+            const name = card.getAttribute('data-name') || '';
+            const cat = card.getAttribute('data-cat') || '';
+
+            const matchSearch = !searchVal || name.includes(searchVal);
+            const matchCat = !currentCategoryFilter || cat === currentCategoryFilter;
+
+            if (matchSearch && matchCat) {
+                card.classList.remove('hidden');
+                visibleCount++;
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+
+        const noFoundElem = document.getElementById('noFavProductsFound');
+        if (noFoundElem) {
+            if (visibleCount === 0) {
+                noFoundElem.classList.remove('hidden');
+            } else {
+                noFoundElem.classList.add('hidden');
+            }
+        }
+    }
+
+    async function submitFavoriteSync() {
+        const btn = document.getElementById('btnSaveFavorites');
+        const checkedBoxes = document.querySelectorAll('.fav-checkbox:checked');
+        const selectedIds = Array.from(checkedBoxes).map(cb => parseInt(cb.value));
+
+        if (btn) {
+            btn.disabled = true;
+            btn.innerHTML = `
+                <svg class="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span>Menyimpan...</span>
+            `;
+        }
+
+        try {
+            const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '{{ csrf_token() }}';
+            const response = await fetch('{{ route("dashboard.product.sync-favorites") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken,
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    selected_ids: selectedIds
+                })
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                window.location.reload();
+            } else {
+                alert('Gagal menyimpan menu favorit: ' + (result.message || 'Terjadi kesalahan'));
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerHTML = '<span>✓</span><span>Simpan & Terapkan ke Beranda</span>';
+                }
+            }
+        } catch (err) {
+            console.error(err);
+            alert('Terjadi kesalahan saat menyimpan menu favorit.');
+            if (btn) {
+                btn.disabled = false;
+                btn.innerHTML = '<span>✓</span><span>Simpan & Terapkan ke Beranda</span>';
+            }
+        }
+    }
+
+    async function quickRemoveFavorite(event, productId, productName) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (!confirm(`Hapus "${productName}" dari Menu Favorit Beranda?`)) {
+            return;
+        }
+
+        try {
+            const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '{{ csrf_token() }}';
+            const response = await fetch(`/dashboard/products/${productId}/toggle-favorite`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken,
+                    'Accept': 'application/json'
+                }
+            });
+
+            const res = await response.json();
+            if (res.success) {
+                window.location.reload();
+            }
+        } catch (err) {
+            console.error(err);
+            window.location.reload();
+        }
     }
 
     // Initialize on DOM ready

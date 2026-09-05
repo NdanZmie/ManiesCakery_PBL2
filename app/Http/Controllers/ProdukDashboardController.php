@@ -144,6 +144,23 @@ class ProdukDashboardController extends Controller
         return back()->with('success', "Produk '{$product->nama}' berhasil {$statusText}.");
     }
 
+    public function syncFavorites(Request $request)
+    {
+        $selectedIds = $request->input('selected_ids', []);
+        
+        // Reset all to 0, then update selected to 1
+        Produk::query()->update(['favourit' => 0]);
+        if (!empty($selectedIds)) {
+            Produk::whereIn('id', $selectedIds)->update(['favourit' => 1]);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Daftar Menu Favorit Beranda berhasil diperbarui!',
+            'count' => count($selectedIds)
+        ]);
+    }
+
     public function destroy(Produk $product)
     {
         if ($product->gambar && Storage::exists('public/' . $product->gambar)) {
