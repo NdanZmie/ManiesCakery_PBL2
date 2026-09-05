@@ -22,40 +22,7 @@
 </head>
 <body class="bg-[#FAF7F2] text-[#332B25] flex flex-col min-h-screen font-sans antialiased selection:bg-[#DFAC6B] selection:text-[#241C16]">
 
-    <!-- Top Announcement & Store Info Bar (Glass Theme) -->
-    <div class="glass-topbar text-[#DFAC6B] text-[11px] md:text-xs py-2 px-4 shadow-sm relative z-50">
-        <div class="max-w-[1720px] w-full mx-auto px-4 sm:px-6 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-2">
-            <div class="flex items-center gap-3 md:gap-4 text-center sm:text-left text-white/80">
-                <span class="inline-flex items-center gap-1.5 bg-white/5 hover:bg-white/10 px-3 py-0.5 rounded-full border border-white/10 backdrop-blur-md transition-colors">
-                    <span class="text-amber-400">📍</span> 
-                    <span class="font-medium text-white/90">Batam, Kepri</span>
-                </span>
-                <span class="hidden md:inline text-white/20">•</span>
-                <span class="hidden md:inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 px-3 py-0.5 rounded-full border border-white/10 backdrop-blur-md transition-colors">
-                    <span class="relative flex h-2 w-2">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                    </span>
-                    <span class="font-medium text-white/90">Buka Setiap Hari (08.00 - 20.00 WIB)</span>
-                </span>
-            </div>
-            
-            <div class="flex items-center gap-3">
-                <span class="text-white/90 font-medium hidden sm:inline-flex items-center gap-1.5 bg-white/5 px-2.5 py-0.5 rounded-full border border-white/10">
-                    <span>✨</span>
-                    <span>100% Freshly Baked Daily</span>
-                </span>
-                <span class="text-white/20 hidden sm:inline">•</span>
-                <a 
-                    href="https://wa.me/6289665314602" 
-                    target="_blank" 
-                    class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/10 hover:bg-[#DFAC6B] text-[#DFAC6B] hover:text-[#241C16] border border-white/15 hover:border-transparent transition-all duration-300 font-bold shadow-sm transform hover:scale-105 active:scale-95"
-                >
-                    <span>📱 WA: 0896-6531-4602</span>
-                </a>
-            </div>
-        </div>
-    </div>
+
 
     <!-- Main Navigation Header with Frosted Glass Theme -->
     <header class="glass-nav sticky top-0 z-50 shadow-2xl transition-all duration-300">
