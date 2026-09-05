@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('about_us', function (Blueprint $table) {
             $table->id();
-            $table->text('section_left')->nullable();
-            $table->text('section_right')->nullable();
+            $table->text('about_left')->nullable();
+            $table->text('about_right')->nullable();
+            $table->text('philosophy_left')->nullable();
+            $table->text('philosophy_right')->nullable();
+            $table->string('galeri')->nullable();
             $table->timestamps();
         });
     }

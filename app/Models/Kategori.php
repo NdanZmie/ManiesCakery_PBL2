@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use app\Models\Produk;
+use App\Models\Produk;
 
 class Kategori extends Model
 {

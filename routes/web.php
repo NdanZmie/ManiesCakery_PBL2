@@ -12,6 +12,7 @@ use App\Http\Controllers\ProdukDashboardController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SliderController;
 use App\Models\Slider;
+use App\Models\Produk;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 
@@ -84,7 +85,15 @@ Route::get('/', function () {
         $sliders->push(null);
     }
 
-    return view('index_new', ['sliders' => $sliders]);
+    $produkFavorit = Produk::where('favourit', 1)->take(4)->get();
+    if ($produkFavorit->isEmpty()) {
+        $produkFavorit = Produk::where('status', 1)->take(4)->get();
+    }
+
+    return view('index_new', [
+        'sliders' => $sliders,
+        'produkFavorit' => $produkFavorit,
+    ]);
 });
 Route::post('/slider/update', [SliderController::class, 'update'])->name('slider.update');
 // END Routes Gambar Slider

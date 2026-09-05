@@ -80,11 +80,28 @@ class AboutUsController extends Controller
                 $row->update(['galeri' => $path]);
 
             } else {
-        
                 AboutUs::create(['galeri' => $path]);
             }
         }
 
         return back()->with('success', 'Galeri berhasil diperbarui.');
+    }
+
+    public function edit($id)
+    {
+        $about = AboutUs::findOrFail($id);
+        return redirect()->route('about.index');
+    }
+
+    public function destroyText($id, $section)
+    {
+        $about = AboutUs::findOrFail($id);
+        if (in_array($section, ['about', 'about_left', 'about_right'])) {
+            $about->update(['about_left' => '', 'about_right' => '']);
+        } elseif (in_array($section, ['philosophy', 'philosophy_left', 'philosophy_right'])) {
+            $about->update(['philosophy_left' => '', 'philosophy_right' => '']);
+        }
+
+        return redirect()->route('about.index')->with('success', 'Section berhasil direset.');
     }
 }

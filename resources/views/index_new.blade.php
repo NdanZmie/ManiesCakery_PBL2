@@ -3,17 +3,6 @@
 @section('title', 'Manies Cakery - Home')
 @section('content')
 
-@php
-    use App\Models\Slider;
-
-    $sliders = Slider::orderBy('id')->take(5)->get();
-
-    while ($sliders->count() < 5) {
-        $sliders->push(null);
-    }
-@endphp
-
-
 <br>
 
     <div id="default-carousel" class="relative w-full" data-carousel="slide">
@@ -21,7 +10,7 @@
       <div class="relative h-100 overflow-hidden rounded-lg md:h-130">
     @for ($i = 1; $i <= 5; $i++)
         @php
-            $slider = \App\Models\Slider::find($i);
+            $slider = $sliders[$i - 1] ?? null;
         @endphp
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
             @if ($slider && $slider->gambar)
@@ -192,18 +181,19 @@
     <br>
     <section class="px-10 py-6 bg-white rounded-xl shadow border-2 border-dashed border-secondary">
         <p class="text-center text-5xl font-norican text-accent capitalize">menu favourite</p>
-        <br>
-        <div class="flex justify-between">
-            @foreach ($produkFavorit as $produk)    
+        <div class="flex justify-between flex-wrap gap-4">
+            @forelse ($produkFavorit as $produk)    
             <a href="{{ route('produk.detail', $produk->id) }}">
                 <div class="relative group overflow-hidden rounded-full size-70 shadow-xl hover:shadow-2xl hover:scale-90 transition-all duration-300 transform hover:cursor-pointer">
-                    <img src="{{ asset('storage/' . $produk->gambar) }}" alt="Cookies" class="w-full object-cover brightness-75 transition-transform duration-500 group-hover:scale-110">
+                    <img src="{{ asset('storage/' . $produk->gambar) }}" alt="{{ $produk->nama }}" class="w-full h-full object-cover brightness-75 transition-transform duration-500 group-hover:scale-110">
                     <div class="w-full h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center flex-col text-center text-white">
                         <h2 class="text-xl text-wrap w-50 font-bold capitalize">{{ $produk->nama }}</h2>
                     </div>
                 </div>
             </a>
-            @endforeach
+            @empty
+            <p class="text-center text-gray-500 w-full py-4">Belum ada produk favorit yang ditampilkan.</p>
+            @endforelse
         </div>
     </section>
     <br>

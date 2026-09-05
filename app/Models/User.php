@@ -14,14 +14,21 @@ class User extends Authenticatable
 
     protected $table = 'user'; 
     
-    protected $fillable = ['username', 'email', 'telepon', 'password', 'role', 'gambar'];
+    protected $fillable = [
+        'name',
+        'username',
+        'email',
+        'telepon',
+        'password',
+        'role',
+        'gambar',
+        'last_login_at',
+    ];
     
-    protected $hidden = ['password'];
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
-    public $timestamps = false;
-
-    public function setUpdatedAt($value)
-    {
-        // kosongin aja guyss
-    }
+    public $timestamps = true;
 }
