@@ -14,16 +14,18 @@
             
             <!-- Brand Logo & Header -->
             <div class="text-center mb-8">
-                <a href="/" class="inline-block mb-4 group">
+                <a href="/" class="inline-flex items-center justify-center mb-4 group px-6 py-3 rounded-2xl bg-[#241C16] border border-amber-500/30 shadow-xl shadow-amber-950/20 transition-all duration-300 hover:scale-105 hover:border-amber-400">
                     <img 
                         src="{{ asset('assets/maniescakery2.png') }}" 
                         alt="Manies Cakery" 
-                        class="h-14 w-auto mx-auto object-contain transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_4px_12px_rgba(223,172,107,0.3)]"
+                        class="h-10 sm:h-11 w-auto mx-auto object-contain filter drop-shadow-[0_2px_8px_rgba(223,172,107,0.4)]"
                     >
                 </a>
                 
-                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-wider mb-2">
-                    <span>✨</span> Selamat Datang Kembali
+                <div class="mb-2">
+                    <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-100 border border-amber-200 text-amber-900 text-xs font-bold uppercase tracking-wider">
+                        ✨ Selamat Datang Kembali
+                    </span>
                 </div>
                 <h1 class="text-2xl sm:text-3xl font-bold text-[#332B25] font-serif">
                     Masuk ke Akun Anda
