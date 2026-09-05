@@ -93,4 +93,49 @@ class SecurityAndAuthTest extends TestCase
             'id' => $currentUser->id,
         ]);
     }
+
+    /**
+     * Admin can view edit user page and update user data.
+     */
+    public function test_admin_can_edit_and_update_user(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+        $targetUser = User::factory()->create(['role' => 'user']);
+
+        $editResponse = $this->actingAs($admin)->get('/users/' . $targetUser->id . '/edit');
+        $editResponse->assertStatus(200);
+
+        $newUsername = 'updated_' . uniqid();
+        $newEmail = 'updated_' . uniqid() . '@example.com';
+
+        $updateResponse = $this->actingAs($admin)->put('/users/' . $targetUser->id, [
+            'name' => 'Updated Name',
+            'username' => $newUsername,
+            'email' => $newEmail,
+            'telepon' => '08999999999',
+            'role' => 'admin',
+        ]);
+
+        $updateResponse->assertRedirect('/usersdashboard');
+        $this->assertDatabaseHas('user', [
+            'id' => $targetUser->id,
+            'username' => $newUsername,
+            'email' => $newEmail,
+            'role' => 'admin',
+        ]);
+    }
+
+    /**
+     * Admin can delete category by name.
+     */
+    public function test_admin_can_delete_category(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+        $cat = \App\Models\Kategori::create(['nama' => 'CatTest_' . uniqid()]);
+
+        $res = $this->actingAs($admin)->delete('/dashboard/kategori/' . $cat->nama);
+        $res->assertStatus(302);
+        $this->assertDatabaseMissing('kategori', ['nama' => $cat->nama]);
+    }
 }
+

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produk;
-use App\Models\kategori;
+use App\Models\Kategori;
 use Illuminate\Support\Facades\Auth;
 
 class ProdukController extends Controller

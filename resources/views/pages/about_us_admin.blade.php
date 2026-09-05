@@ -17,9 +17,8 @@
 @endpush
 
 <div class="max-w-5xl mx-auto px-6 md:px-12 py-4">
-    <a href="/about_us"
+    <a href="{{ route('about.index') }}"
         class="inline-block bg-amber-600 hover:bg-amber-700 text-white text-xs font-semibold py-2 px-3 rounded shadow-md transition duration-300"
-       class="inline-block bg-amber-600 hover:bg-amber-700 text-white text-xs font-semibold py-2 px-3 rounded shadow-md transition duration-300"
     >
         ← About Us 
     </a>

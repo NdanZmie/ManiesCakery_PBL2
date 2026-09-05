@@ -112,11 +112,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
         // Categories Management
         Route::post('/kategori/tambah', [ProdukDashboardController::class, 'addNewCategory'])->name('kategori.tambah');
-        Route::delete('/kategori/{id}', [ProdukDashboardController::class, 'deleteCategory'])->name('kategori.hapus');
+        Route::delete('/kategori/{nama}', [ProdukDashboardController::class, 'deleteCategory'])->name('kategori.hapus');
     });
 
     // Toggle Product Status
-    Route::match(['get', 'post'], '/produk', [ProdukController::class, 'toggleStatus'])->name('produk.toggle-status');
+    Route::post('/produk/toggle-status', [ProdukController::class, 'toggleStatus'])->name('produk.toggle-status');
 
     // Users Management
     Route::get('/usersdashboard', [UserController::class, 'index'])->name('usersdashboard');

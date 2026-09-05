@@ -131,9 +131,9 @@ class ProdukDashboardController extends Controller
         return back()->with('success', 'Kategori berhasil ditambahkan.');
     }
 
-    public function deleteCategory($nama)
+    public function deleteCategory($param)
     {
-        $kategori = Kategori::where('nama', $nama)->firstOrFail();
+        $kategori = Kategori::where('nama', $param)->firstOrFail();
         $kategori->delete();
 
         return back()->with('success', 'Kategori berhasil dihapus.');

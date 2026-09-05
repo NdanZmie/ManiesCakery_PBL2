@@ -13,8 +13,7 @@
 
     <!-- Main Section -->
     <div class="max-w-5xl mx-auto px-6 md:px-12 py-8 space-y-16">
-        <div class="max-w-5xl mx-auto px-6 md:px-12 py-8 space-y-16">
-            <!-- About Us -->
+        <!-- About Us -->
             <div>
                 <div class="flex items-center mb-4">
                     <span class="inline-block w-16 h-px bg-amber-950 mr-3"></span>
@@ -219,7 +218,6 @@
             </div>
         </div>
     </div>
-</section>
 @endsection
 
 <script>

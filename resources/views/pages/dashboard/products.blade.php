@@ -222,31 +222,32 @@
 
 <!-- TABEL PRODUK -->
 <div class="overflow-x-auto shadow-md rounded-lg">
-    <table class="min-w-full table-fixed divide-y divide-gray-200">
+    <table class="min-w-full divide-y divide-gray-200">
         <thead class="bg-gray-50 text-xs font-semibold text-gray-700 uppercase">
             <tr>
-                <th class="w-1/5 px-6 py-3 text-left">Nama Produk</th>
-                <th class="w-1/4 px-6 py-3 text-left">Deskripsi</th>
-                <th class="w-1/5 px-6 py-3 text-left">Harga</th>
-                {{-- <th class="w-1/5 px-6 py-3 text-left">Gambar</th> --}}
-                <th class="w-1/5 px-6 py-3 text-left">Kategori</th>
-                <th class="w-1/5 px-6 py-3 text-left max-w-20">Instagram</th>
-
-
-               
-                <th class="w-1/5 px-6 py-3 text-left">Aksi</th>
+                <th class="px-4 py-3 text-left w-16">Gambar</th>
+                <th class="px-6 py-3 text-left">Nama Produk</th>
+                <th class="px-6 py-3 text-left">Deskripsi</th>
+                <th class="px-6 py-3 text-left">Harga</th>
+                <th class="px-6 py-3 text-left">Kategori</th>
+                <th class="px-6 py-3 text-left">Instagram</th>
+                <th class="px-6 py-3 text-left">Aksi</th>
             </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
             @foreach($products as $product)
             <tr class="hover:bg-gray-100">
-                <td class="px-6 py-4 whitespace-wrap">{{ $product->nama }}</td>
-                <td class="px-6 py-4 whitespace-wrap truncate max-w-70">{{  $product->deskripsi }}</td>
-                <td class="px-6 py-4 whitespace-nowrap">Rp {{ number_format($product->harga, 0, ',', '.') }}</td>
-                {{-- <td class="px-6 py-4 whitespace-nowrap">
-                    <img src="{{ asset('storage/' . $product->gambar) }}" alt="{{ $product->gambar }}" class="w-16 h-16 object-cover rounded"> --}}
+                <td class="px-4 py-4 whitespace-nowrap">
+                    @if($product->gambar)
+                        <img src="{{ asset('storage/' . $product->gambar) }}" alt="{{ $product->nama }}" class="w-12 h-12 object-cover rounded shadow-sm border">
+                    @else
+                        <div class="w-12 h-12 bg-gray-100 rounded flex items-center justify-center text-gray-400 text-xs">No img</div>
+                    @endif
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap">{{ $product->kategori }}</td>
+                <td class="px-6 py-4 whitespace-wrap font-medium text-gray-900">{{ $product->nama }}</td>
+                <td class="px-6 py-4 whitespace-wrap truncate max-w-xs text-gray-600">{{ $product->deskripsi }}</td>
+                <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-800">Rp {{ number_format($product->harga, 0, ',', '.') }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-gray-600">{{ $product->kategori }}</td>
                 <td class="px-6 py-4 whitespace-nowrap">
                 @if ($product->link_instagram)
                     <a href="{{ $product->link_instagram }}" class="text-blue-600 underline" target="_blank">Link</a>

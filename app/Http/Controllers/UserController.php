@@ -62,20 +62,19 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'username' => 'required|string|max:255',
-            'email' => 'required|email',
-            // 'telepon' => 'required',
-        ]);
-
         $user = User::findOrFail($id);
-        $user->update([
-            'username' => $request->username,
-            'email' => $request->email,
-            // 'telepon' => $request->telepon,
+
+        $request->validate([
+            'username' => 'required|string|max:255|unique:user,username,' . $user->id,
+            'email' => 'required|email|unique:user,email,' . $user->id,
+            'name' => 'nullable|string|max:255',
+            'telepon' => 'nullable|string|max:20',
+            'role' => 'nullable|in:user,admin,superadmin',
         ]);
 
-        return redirect()->route('users.index')->with('success', 'User updated successfully.');
+        $user->update($request->only(['username', 'email', 'name', 'telepon', 'role']));
+
+        return redirect()->route('usersdashboard')->with('success', 'User updated successfully.');
     }
 
     public function destroy($id)

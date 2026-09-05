@@ -27,7 +27,6 @@
 
     <form method="POST" action="{{ route('produk.toggle-status') }}" id="cardStatusForm">
         @csrf
-        @method('GET')
         <input type="hidden" name="action" id="cardActionType">
 
         @if (Auth::check() && in_array(Auth::user()->role, ['admin', 'superadmin']))                          
