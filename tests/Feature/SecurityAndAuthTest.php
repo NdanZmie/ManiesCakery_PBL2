@@ -147,5 +147,15 @@ class SecurityAndAuthTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('heroSlider');
     }
+
+    /**
+     * About Us page loads successfully with story and gallery.
+     */
+    public function test_about_us_page_renders_successfully(): void
+    {
+        $response = $this->get('/about-us');
+        $response->assertStatus(200);
+        $response->assertSee('Manies Cakery');
+    }
 }
 

@@ -57,7 +57,7 @@ class AboutUsController extends Controller
     public function updateGaleri(Request $request)
     {
         $request->validate([
-            'images.*' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'images.*' => 'nullable|image|mimes:jpg,jpeg,png,webp,jfif,avif|max:5120',
         ]);
 
         $existing = AboutUs::whereNotNull('galeri')
