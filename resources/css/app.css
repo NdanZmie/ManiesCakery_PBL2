@@ -106,3 +106,61 @@
     border: 1px solid rgba(255, 255, 255, 0.40);
     box-shadow: 0 16px 48px 0 rgba(223, 172, 107, 0.28);
 }
+
+/* 3D Auth Flip Card Transitions */
+.auth-perspective {
+    perspective: 1400px;
+}
+
+.auth-flipper {
+    position: relative;
+    width: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1), height 0.4s ease;
+}
+
+.auth-flipper.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.auth-card-front,
+.auth-card-back {
+    width: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.auth-card-front {
+    transform: rotateY(0deg);
+}
+
+.auth-card-back {
+    transform: rotateY(180deg);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.auth-flipper.is-flipped .auth-card-front {
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease 0.15s;
+}
+
+.auth-flipper:not(.is-flipped) .auth-card-front {
+    opacity: 1;
+    transition: opacity 0.3s ease 0.2s;
+}
+
+.auth-flipper:not(.is-flipped) .auth-card-back {
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease 0.15s;
+}
+
+.auth-flipper.is-flipped .auth-card-back {
+    opacity: 1;
+    transition: opacity 0.3s ease 0.2s;
+}
