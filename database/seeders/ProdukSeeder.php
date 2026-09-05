@@ -36,7 +36,7 @@ class ProdukSeeder extends Seeder
             }
         }
 
-        // Salin hampers juga
+        // Salin hampers juga jika ada
         $hampersAsset = public_path('assets/hampers/Hampers-M.png');
         if (File::exists($hampersAsset)) {
             File::copy($hampersAsset, $storageDir . '/Hampers-M.png');
@@ -84,7 +84,7 @@ class ProdukSeeder extends Seeder
                 'kategori' => 'Brownies',
                 'gambar' => 'images/CustomBrownies.jpg',
                 'status' => true,
-                'favourit' => 1,
+                'favourit' => 0,
                 'link_instagram' => 'https://www.instagram.com/manies.cakery/',
             ],
             [
@@ -114,7 +114,7 @@ class ProdukSeeder extends Seeder
                 'kategori' => 'Brownies',
                 'gambar' => 'images/PREM1.jpg',
                 'status' => true,
-                'favourit' => 1,
+                'favourit' => 0,
                 'link_instagram' => 'https://www.instagram.com/manies.cakery/',
             ],
             [
@@ -150,16 +150,6 @@ class ProdukSeeder extends Seeder
 
             // ==================== 11 - 22: CAKE ====================
             [
-                'nama' => 'Bolu Pisang Keju Spesial',
-                'deskripsi' => 'Bolu pisang lembut khas Manies Cakery dengan aroma pisang raja pilihan dan taburan keju cheddar melimpah di atasnya.',
-                'harga' => 45000,
-                'kategori' => 'Cake',
-                'gambar' => 'images/BoluPisang.jpg',
-                'status' => true,
-                'favourit' => 1,
-                'link_instagram' => 'https://www.instagram.com/manies.cakery/',
-            ],
-            [
                 'nama' => 'Special Birthday Cake',
                 'deskripsi' => 'Kue ulang tahun spesial berlapis krim lembut dengan hiasan cantik, cocok untuk perayaan hari istimewa Anda.',
                 'harga' => 135000,
@@ -180,13 +170,23 @@ class ProdukSeeder extends Seeder
                 'link_instagram' => 'https://www.instagram.com/manies.cakery/',
             ],
             [
+                'nama' => 'Bolu Pisang Keju Spesial',
+                'deskripsi' => 'Bolu pisang lembut khas Manies Cakery dengan aroma pisang raja pilihan dan taburan keju cheddar melimpah di atasnya.',
+                'harga' => 45000,
+                'kategori' => 'Cake',
+                'gambar' => 'images/BoluPisang.jpg',
+                'status' => true,
+                'favourit' => 0,
+                'link_instagram' => 'https://www.instagram.com/manies.cakery/',
+            ],
+            [
                 'nama' => 'Premium Red Velvet Cake',
                 'deskripsi' => 'Cake red velvet elegan dengan lapisan frosting cream cheese gurih dan taburan remahan halus berwarna merah menggoda.',
                 'harga' => 120000,
                 'kategori' => 'Cake',
                 'gambar' => 'images/PREM1.jpg',
                 'status' => true,
-                'favourit' => 1,
+                'favourit' => 0,
                 'link_instagram' => 'https://www.instagram.com/manies.cakery/',
             ],
             [
@@ -196,7 +196,7 @@ class ProdukSeeder extends Seeder
                 'kategori' => 'Cake',
                 'gambar' => 'images/PREM2.jpg',
                 'status' => true,
-                'favourit' => 1,
+                'favourit' => 0,
                 'link_instagram' => 'https://www.instagram.com/manies.cakery/',
             ],
             [
@@ -236,7 +236,7 @@ class ProdukSeeder extends Seeder
                 'kategori' => 'Cake',
                 'gambar' => 'images/CustomMatcha.jpg',
                 'status' => true,
-                'favourit' => 1,
+                'favourit' => 0,
                 'link_instagram' => 'https://www.instagram.com/manies.cakery/',
             ],
             [
@@ -298,7 +298,7 @@ class ProdukSeeder extends Seeder
                 'kategori' => 'Cookies',
                 'gambar' => 'images/MiniBrowkies.jpg',
                 'status' => true,
-                'favourit' => 1,
+                'favourit' => 0,
                 'link_instagram' => 'https://www.instagram.com/manies.cakery/',
             ],
             [
@@ -318,7 +318,7 @@ class ProdukSeeder extends Seeder
                 'kategori' => 'Cookies',
                 'gambar' => 'images/Cookies-M.png',
                 'status' => true,
-                'favourit' => 1,
+                'favourit' => 0,
                 'link_instagram' => 'https://www.instagram.com/manies.cakery/',
             ],
             [
@@ -328,7 +328,7 @@ class ProdukSeeder extends Seeder
                 'kategori' => 'Cookies',
                 'gambar' => 'images/Cookies-M.png',
                 'status' => true,
-                'favourit' => 1,
+                'favourit' => 0,
                 'link_instagram' => 'https://www.instagram.com/manies.cakery/',
             ],
             [
@@ -380,7 +380,7 @@ class ProdukSeeder extends Seeder
                 'kategori' => 'Hampers',
                 'gambar' => 'images/Hampers-M.png',
                 'status' => true,
-                'favourit' => 1,
+                'favourit' => 0,
                 'link_instagram' => 'https://www.instagram.com/manies.cakery/',
             ],
             [
@@ -390,7 +390,7 @@ class ProdukSeeder extends Seeder
                 'kategori' => 'Hampers',
                 'gambar' => 'images/Hampers-M.png',
                 'status' => true,
-                'favourit' => 1,
+                'favourit' => 0,
                 'link_instagram' => 'https://www.instagram.com/manies.cakery/',
             ],
             [
@@ -400,7 +400,7 @@ class ProdukSeeder extends Seeder
                 'kategori' => 'Hampers',
                 'gambar' => 'images/Hampers-M.png',
                 'status' => true,
-                'favourit' => 1,
+                'favourit' => 0,
                 'link_instagram' => 'https://www.instagram.com/manies.cakery/',
             ],
             [
@@ -462,7 +462,7 @@ class ProdukSeeder extends Seeder
                 'kategori' => 'Small Cake',
                 'gambar' => 'images/Small-M.png',
                 'status' => true,
-                'favourit' => 1,
+                'favourit' => 0,
                 'link_instagram' => 'https://www.instagram.com/manies.cakery/',
             ],
             [
@@ -482,7 +482,7 @@ class ProdukSeeder extends Seeder
                 'kategori' => 'Small Cake',
                 'gambar' => 'images/Small-M.png',
                 'status' => true,
-                'favourit' => 1,
+                'favourit' => 0,
                 'link_instagram' => 'https://www.instagram.com/manies.cakery/',
             ],
             [
@@ -514,7 +514,7 @@ class ProdukSeeder extends Seeder
                 'kategori' => 'Cupcake',
                 'gambar' => 'images/Small-M.png',
                 'status' => true,
-                'favourit' => 1,
+                'favourit' => 0,
                 'link_instagram' => 'https://www.instagram.com/manies.cakery/',
             ],
             [
@@ -524,7 +524,7 @@ class ProdukSeeder extends Seeder
                 'kategori' => 'Cupcake',
                 'gambar' => 'images/Small-M.png',
                 'status' => true,
-                'favourit' => 1,
+                'favourit' => 0,
                 'link_instagram' => 'https://www.instagram.com/manies.cakery/',
             ],
             [

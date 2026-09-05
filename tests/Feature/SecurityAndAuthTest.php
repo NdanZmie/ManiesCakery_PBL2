@@ -193,6 +193,63 @@ class SecurityAndAuthTest extends TestCase
         $product->refresh();
         $this->assertEquals($initialStatus, $product->favourit);
     }
+
+    /**
+     * Product catalog and category filter page render successfully.
+     */
+    public function test_product_catalog_and_category_filter_render(): void
+    {
+        $response = $this->get('/products/category=All');
+        $response->assertStatus(200);
+
+        $responseCake = $this->get('/products/category=Cake');
+        $responseCake->assertStatus(200);
+    }
+
+    /**
+     * Product detail page renders successfully for existing product.
+     */
+    public function test_product_detail_page_renders(): void
+    {
+        $product = \App\Models\Produk::first();
+        if ($product) {
+            $response = $this->get('/produk/' . $product->id);
+            $response->assertStatus(200);
+            $response->assertSee($product->nama);
+        } else {
+            $this->assertTrue(true);
+        }
+    }
+
+    /**
+     * Admin can search products on the dashboard.
+     */
+    public function test_admin_can_search_products(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+        $response = $this->actingAs($admin)->get('/dashboard/products/search?keyword=Brownies');
+        $response->assertStatus(200);
+    }
+
+    /**
+     * Sync favorites enforces max 5 limit.
+     */
+    public function test_sync_favorites_enforces_max_5_limit(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+        
+        // 6 IDs should be rejected with 422
+        $responseReject = $this->actingAs($admin)->postJson('/dashboard/products/sync-favorites', [
+            'selected_ids' => [1, 2, 3, 4, 5, 6]
+        ]);
+        $responseReject->assertStatus(422);
+
+        // 5 IDs or fewer should be accepted
+        $responseAccept = $this->actingAs($admin)->postJson('/dashboard/products/sync-favorites', [
+            'selected_ids' => [1, 2, 3, 4, 5]
+        ]);
+        $responseAccept->assertStatus(200);
+    }
 }
 
 
