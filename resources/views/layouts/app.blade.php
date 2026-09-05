@@ -22,8 +22,8 @@
 <body class="bg-[#FAF7F2] text-[#332B25] flex flex-col min-h-screen font-sans antialiased selection:bg-[#DFAC6B] selection:text-white">
 
     <!-- Top Announcement & Store Info Bar -->
-    <div class="bg-[#241C16] text-[#DFAC6B] text-[11px] md:text-xs py-2 px-4 border-b border-amber-950/60">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+    <div class="bg-[#241C16] text-[#DFAC6B] text-[11px] md:text-xs py-2.5 px-4 border-b border-amber-950/60">
+        <div class="max-w-[1720px] w-full mx-auto px-4 sm:px-6 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-2">
             <div class="flex items-center gap-4 text-center sm:text-left text-white/80">
                 <span class="flex items-center gap-1.5">
                     <span class="text-amber-400">📍</span> Batam, Kepri
@@ -50,7 +50,7 @@
 
     <!-- Main Navigation Header with Glassmorphism -->
     <header class="glass-nav sticky top-0 z-50 shadow-lg border-b border-amber-500/20 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-[1720px] w-full mx-auto px-4 sm:px-6 lg:px-10">
             <div class="flex items-center justify-between h-20">
                 
                 <!-- Brand Logo -->
@@ -224,7 +224,7 @@
 
     <!-- Global Toast / Alert Notifications -->
     @if(session('success') || session('error') || session('status'))
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+    <div class="max-w-[1720px] w-full mx-auto px-4 sm:px-6 lg:px-10 mt-4">
         @if(session('success'))
             <div class="flex items-center justify-between p-4 text-emerald-900 bg-emerald-50 border border-emerald-200 rounded-2xl shadow-sm" role="alert">
                 <div class="flex items-center gap-3">
@@ -248,7 +248,7 @@
     @endif
 
     <!-- Main Content Container -->
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="flex-grow max-w-[1720px] w-full mx-auto px-4 sm:px-6 lg:px-10 py-8">
         @yield('content')
     </main>
 
@@ -271,7 +271,7 @@
         
         <!-- Top Slogan & Instant Pre-Order Banner -->
         <div class="bg-gradient-to-r from-[#DFAC6B] via-[#E8BA7E] to-[#DFAC6B] text-[#241C16] py-8 px-4 shadow-inner">
-            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div class="max-w-[1720px] w-full mx-auto px-4 sm:px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
                 <div>
                     <h3 class="font-norican text-4xl md:text-5xl font-bold">Made with Love, Enjoyed with Happiness</h3>
                     <p class="text-xs md:text-sm font-semibold text-[#241C16]/80 mt-1 max-w-xl">
@@ -291,7 +291,7 @@
         </div>
 
         <!-- Main Footer Columns Grid -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="max-w-[1720px] w-full mx-auto px-4 sm:px-6 lg:px-10 py-16">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
                 
                 <!-- Col 1: Brand & Guarantee -->
